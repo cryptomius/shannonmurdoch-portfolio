@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Shannon Murdoch, Product Design Leader</title>
+<meta name="description" content="Four product design case studies: a purchase-path dead-end worth +$500k AUD per month, a six-round mobile flight search rebuild, founding Webjet's first UI Pattern Library, and a solo AI-orchestrated marketplace build.">
+<link rel="canonical" href="https://shannonmurdoch.com/work.html">
+<meta name="theme-color" content="#FBFAF7">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shannon Murdoch">
+<meta property="og:url" content="https://shannonmurdoch.com/work.html">
+<meta property="og:title" content="Work — Shannon Murdoch, Product Design Leader">
+<meta property="og:description" content="Four case studies written up as walk-throughs: the context inherited, the calls made, what testing said was wrong, and what shipping changed.">
+<meta property="og:image" content="https://shannonmurdoch.com/images/og-shannon-murdoch.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shannonmurdoch.com/images/og-shannon-murdoch.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="index.html">Shannon Murdoch<span class="brand__dot">.</span></a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="visually-hidden">Menu</span>
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="work.html" aria-current="page">Work</a></li>
+        <li><a class="nav__link" href="about.html">About</a></li>
+        <li><a class="nav__link" href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary" href="contact.html">Let's talk</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Case studies</p>
+      <h1 style="font-size:var(--step-5);max-width:26ch">Four projects, written up <em>honestly</em>.</h1>
+      <p class="lede-lg mt-5" style="max-width:52ch">
+        Including the rounds where testing told me my design was wrong, and the two occasions I had to reverse out of a
+        direction I&rsquo;d already sold internally.
+      </p>
+      <p class="mt-5" style="color:var(--ink-3);font-size:var(--step--1)">
+        Everything at Webjet was designed under my UX leadership between 2015 and 2021 and remains commercially
+        sensitive only where noted. Screens shown are the original artefacts from the projects.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="wrap">
+      <div class="work-list">
+
+        <article class="work-card" data-reveal>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="chip chip--solid">01</span>
+              <span class="chip">Webjet</span>
+              <span class="chip">UX research</span>
+              <span class="chip">Interaction design</span>
+              <span class="chip">Conversion</span>
+            </div>
+            <h2 class="work-card__title"><a href="work/paired-flight-modal.html">Unblocking a purchase-path dead-end</a></h2>
+            <p class="work-card__desc">
+              Customers who picked a paired international fare landed on a screen where every returning flight appeared
+              unavailable. A problem the business had circled for two years with three unbuilt solutions on the table.
+              Six prototype rounds later, people understood it.
+            </p>
+            <p class="work-card__outcome">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              +0.2% conversion on Hybrid Matrix, +0.4% on International Matrix &mdash; about +$500k AUD TTV per month
+            </p>
+            <span class="link-arrow">Read the case study <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </div>
+          <div class="work-card__media">
+            <img src="images/work/paired-flight-modal/13-final-design.webp" width="1222" height="743" alt="Final paired-flight modal: departing flight summary above a list of selectable returning flights" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+        <article class="work-card work-card--alt" data-reveal>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="chip chip--solid">02</span>
+              <span class="chip">Webjet</span>
+              <span class="chip">Mobile</span>
+              <span class="chip">6 test rounds</span>
+              <span class="chip">API constraints</span>
+            </div>
+            <h2 class="work-card__title"><a href="work/mobile-flight-purchase-path.html">Rebuilding flight search for mobile</a></h2>
+            <p class="work-card__desc">
+              Inherited external agency wireframes the single-call flight API could not support, plus a legacy mobile
+              site and iOS app that had drifted apart. Six rounds of remote usability testing to a flow people finished
+              without help &mdash; two of those rounds proved my fix made things worse.
+            </p>
+            <p class="work-card__outcome">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              Eliminated both confusion points that had survived three rounds of iteration
+            </p>
+            <span class="link-arrow">Read the case study <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </div>
+          <div class="work-card__media work-card__media--cover">
+            <img src="images/work/mobile-flight-purchase-path/15-round-6-final.webp" width="760" height="1347" alt="Final mobile flight search results with sortable column headers and a promotion card" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+        <article class="work-card" data-reveal>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="chip chip--solid">03</span>
+              <span class="chip">Webjet</span>
+              <span class="chip">Design systems</span>
+              <span class="chip">Stakeholder strategy</span>
+              <span class="chip">Org change</span>
+            </div>
+            <h2 class="work-card__title"><a href="work/ui-pattern-library.html">Founding Webjet's first UI Pattern Library</a></h2>
+            <p class="work-card__desc">
+              Two brands, four countries, seven products, fifteen years of accumulated UI drift, no design standards,
+              and back-end developers implementing front-end work. Getting a pattern library funded was really an
+              argument about resourcing, ownership and workflow &mdash; not about buttons.
+            </p>
+            <p class="work-card__outcome">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              A dedicated front-end team funded; developers reaching for the library by default within six months
+            </p>
+            <span class="link-arrow">Read the case study <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </div>
+          <div class="work-card__media">
+            <img src="images/work/ui-pattern-library/06-button-suite-spec.webp" width="884" height="471" alt="The standardised Webjet button suite showing sizes, states and colour variants" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+        <article class="work-card work-card--alt" data-reveal>
+          <div class="work-card__body">
+            <div class="work-card__meta">
+              <span class="chip chip--solid">04</span>
+              <span class="badge-soon">Write-up in progress</span>
+              <span class="chip">2025&ndash;present</span>
+              <span class="chip">Solo founder</span>
+              <span class="chip">Design system in code</span>
+            </div>
+            <h2 class="work-card__title"><a href="work/web3connect.html">Web3Connect.com &mdash; four apps, eight weeks, one designer</a></h2>
+            <p class="work-card__desc">
+              A B2B reviews-and-recommendations marketplace I designed and shipped solo, with AI as the engineering
+              team. Design system in code before any mockups, a dashboard that adapts to user archetype and tier, and
+              routes built for when the visitor is an LLM rather than a person.
+            </p>
+            <p class="work-card__outcome">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              Live in production &mdash; full walk-through being written now
+            </p>
+            <span class="link-arrow">See the outline <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </div>
+          <div class="work-card__media">
+            <img src="images/work/ui-pattern-library/07-hologram-documentation.webp" width="473" height="392" alt="Placeholder image: documented component library output" loading="lazy" decoding="async">
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ALSO SHIPPED ================= -->
+  <section class="section section--wash">
+    <div class="wrap">
+      <div class="section-head section-head--split" data-reveal>
+        <div>
+          <p class="eyebrow">Also shipped</p>
+          <h2>Work that&rsquo;s live but <em>not written up</em>.</h2>
+        </div>
+        <div><p>Happy to walk through any of these in a conversation.</p></div>
+      </div>
+
+      <div class="panel-grid">
+        <div class="panel" data-reveal>
+          <h3>Flight price heatmap</h3>
+          <p style="color:var(--ink-3);font-size:var(--step--1)">Webjet &middot; 2017&ndash;2019</p>
+          <p class="mt-4">Surfacing cached flight prices per date across routes with wildly varying search volume &mdash;
+          technically the hardest UX enhancement I championed there. I designed the four-colour algorithm that decided
+          what counted as cheap or expensive on a given route, and prototyped and usability-tested it before build.</p>
+        </div>
+        <div class="panel" data-reveal>
+          <h3>Every purchase &amp; post-purchase interface</h3>
+          <p style="color:var(--ink-3);font-size:var(--step--1)">Webjet &middot; 2015&ndash;2021</p>
+          <p class="mt-4">Flights, hotels, packages and car hire, across responsive web and native iOS/Android. Search
+          widgets, results, cart and ancillaries, payment, success states, itinerary management &mdash; plus the email
+          and PDF templates across the booking lifecycle, because printed artefacts still matter to travellers.</p>
+        </div>
+        <div class="panel" data-reveal>
+          <h3>Design ops rescue</h3>
+          <p style="color:var(--ink-3);font-size:var(--step--1)">Eclipse Fi &middot; 2023&ndash;2025</p>
+          <p class="mt-4">Designs were being thrown over the fence from a cluttered Figma canvas and developers were
+          guessing which version was approved. I introduced a signed-off / in-progress workflow with per-product
+          indexes, plus twice-weekly UX&ndash;front-end stand-ups so developer input shaped work before it was built.
+          Rebuilds dropped; morale recovered.</p>
+        </div>
+        <div class="panel" data-reveal>
+          <h3>Live on-chain dashboards</h3>
+          <p style="color:var(--ink-3);font-size:var(--step--1)">Eclipse Fi &amp; LVT Capital &middot; 2020&ndash;2025</p>
+          <p class="mt-4">A token public-sale fundraising dashboard reading directly from on-chain RPCs, customer
+          retention Sankey flows across raise events, and a market-data aggregation and visualisation system used to
+          surface investment opportunities.</p>
+        </div>
+      </div>
+
+      <div class="btn-row mt-7" data-reveal>
+        <a class="btn btn--ghost" href="https://www.webjet.com.au" target="_blank" rel="noopener noreferrer">webjet.com.au &mdash; live</a>
+        <a class="btn btn--ghost" href="https://web3connect.com" target="_blank" rel="noopener noreferrer">web3connect.com &mdash; live</a>
+        <a class="btn btn--ghost" href="https://www.npmjs.com/package/@webjet/react?activeTab=readme" target="_blank" rel="noopener noreferrer">@webjet/react &mdash; the library's descendant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta-band">
+    <div class="wrap cta-band__inner">
+      <div data-reveal>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Want the <em>full story</em> on any of these?</h2>
+        <p>I&rsquo;m looking for a full-time, in-house role on a product team that wants to build with its customers.
+        Happy to walk through the research, the reversals and the numbers.</p>
+        <div class="btn-row mt-5">
+          <a class="btn btn--onink" href="contact.html">What I&rsquo;m looking for</a>
+          <a class="btn btn--onink-ghost" href="about.html">About me</a>
+        </div>
+      </div>
+      <div class="cta-band__contacts" data-reveal>
+        <a class="contact-line" href="mailto:contact@shannonmurdoch.com">
+          <span class="contact-line__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+          <span class="contact-line__text">
+            <span class="contact-line__label">Email</span>
+            <span class="contact-line__value">contact@shannonmurdoch.com</span>
+          </span>
+        </a>
+        <a class="contact-line" href="https://www.linkedin.com/in/smurdoch" target="_blank" rel="noopener noreferrer">
+          <span class="contact-line__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </span>
+          <span class="contact-line__text">
+            <span class="contact-line__label">LinkedIn</span>
+            <span class="contact-line__value">linkedin.com/in/smurdoch</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p>&copy; 2026 Shannon Murdoch &middot; East Gippsland VIC, Australia</p>
+    <ul class="site-footer__nav">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/smurdoch" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="mailto:contact@shannonmurdoch.com">contact@shannonmurdoch.com</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="script.js?v=2" defer></script>
+</body>
+</html>
