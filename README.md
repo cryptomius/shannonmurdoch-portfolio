@@ -66,6 +66,16 @@ All tokens live in `:root` at the top of `style.css`. To retheme, change those a
 - **`style.css` and `script.js` are linked with `?v=N`.** Bump the number when you change either file,
   or returning visitors (and aggressive local dev servers) will keep serving the old copy. This bit us
   repeatedly during the build.
+- **Measured results use `--positive`, never the terracotta accent.** A rising metric in a warm red
+  reads as a loss. `.work-card__outcome` and `.callout--outcome` are green; `.callout--insight` uses
+  the lighter `--positive-wash` so the two callout types stay distinguishable. The terracotta accent
+  stays for brand, links and emphasis.
+- **The work cards are one big link ("stretched link").** `.work-card__title a::after` covers the
+  whole card, thumbnail included, and needs its explicit `z-index: 1`. `.work-card__media` is also
+  positioned with `z-index: auto`, so without it the two paint in order-modified document order —
+  the image covered the overlay on standard cards and `order: -1` flipped it on `--alt` ones, so
+  half the thumbnails were dead. Keep the card to exactly one `<a>`; a second link to the same
+  destination makes the card announce twice to screen readers.
 - `.attr-link__icon` sets **no colour at all**. `fill="currentColor"` makes it inherit the author
   name beside it, in both themes and every state, so the two can't drift apart. That also means
   `.attr-link` is excluded from the generic `.section--ink a:not(.btn)` link tint — without the

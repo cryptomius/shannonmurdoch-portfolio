@@ -31,6 +31,15 @@
      resting state is the mid tone and interaction moves it toward the light. */
   --accent-on-ink:        #EE9B76;
   --accent-on-ink-strong: #F7CBB7;
+  /* Positive / result. Terracotta on a rising metric reads as a loss, so
+     anything reporting a measured gain uses this instead. Not a new hue —
+     it was already in the palette for insight callouts and the ✓ ticks.
+     --positive-tint is the stronger fill (outcomes), --positive-wash the
+     lighter one (insights), so the two callout types stay distinguishable. */
+  --positive:      #2C6B52;
+  --positive-tint: #E4EFE9;
+  --positive-wash: #EDF3F0;
+  --positive-line: #C6DCD0;
   --white:        #FFFFFF;
   --focus:        #1B5FCC;
 
@@ -448,6 +457,9 @@ code, kbd, samp {
   background: var(--white);
   border: 1px solid var(--rule);
   border-radius: var(--r-lg);
+  /* The entire card navigates (see the stretched link below), so the pointer
+     cursor is honest across the whole surface — including the thumbnail. */
+  cursor: pointer;
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 .work-card:hover { border-color: var(--rule-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
@@ -459,13 +471,24 @@ code, kbd, samp {
 .work-card__meta { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-4); }
 .work-card__title { font-size: var(--step-3); margin-bottom: var(--sp-3); }
 .work-card__title a { color: var(--ink); text-decoration: none; }
-.work-card__title a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+/* Stretched link: the whole card — thumbnail included — is one click target.
+   z-index is required, not cosmetic. .work-card__media is also positioned with
+   z-index:auto, so the two paint in order-modified document order: on standard
+   cards the media comes later and covered this overlay, killing clicks on the
+   image; on .work-card--alt, order:-1 flipped it and the image worked. Lifting
+   the overlay makes both layouts behave the same. */
+.work-card__title a::after {
+  content: ""; position: absolute; inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
 .work-card:hover .work-card__title a { color: var(--accent); }
 .work-card__desc { color: var(--ink-2); font-size: var(--step-0); margin-bottom: var(--sp-4); }
 .work-card__outcome {
   display: flex; align-items: flex-start; gap: 0.7ch;
-  font-size: var(--step--1); font-weight: 600; color: var(--accent-ink);
-  background: var(--accent-tint);
+  font-size: var(--step--1); font-weight: 600; color: var(--positive);
+  background: var(--positive-tint);
+  border: 1px solid var(--positive-line);
   border-radius: var(--r-md);
   padding: 0.65rem 0.9rem;
   margin-bottom: var(--sp-4);
@@ -848,11 +871,11 @@ code, kbd, samp {
 .callout p:last-child, .callout ul:last-child { margin-bottom: 0; }
 .callout--decision { background: var(--paper-2); border-color: var(--rule-strong); }
 .callout--decision .callout__label { color: var(--ink-2); }
-.callout--insight { background: #EDF3F0; border-color: #CFE0D8; }
-.callout--insight .callout__label { color: #2C6B52; }
-.callout--outcome { background: var(--accent-tint); border-color: #E9CFC4; }
-.callout--outcome .callout__label { color: var(--accent-ink); }
-.callout--outcome p, .callout--outcome li { color: var(--accent-ink); }
+.callout--insight { background: var(--positive-wash); border-color: var(--positive-line); }
+.callout--insight .callout__label { color: var(--positive); }
+.callout--outcome { background: var(--positive-tint); border-color: var(--positive-line); }
+.callout--outcome .callout__label { color: var(--positive); }
+.callout--outcome p, .callout--outcome li { color: var(--positive); }
 .callout--learn { background: var(--ink); border-color: var(--ink); }
 .callout--learn .callout__label { color: var(--accent-on-ink); }
 .callout--learn p, .callout--learn li { color: rgba(251,250,247,.82); }
@@ -887,7 +910,7 @@ code, kbd, samp {
 .round li { font-size: var(--step--1); color: var(--ink-2); padding-left: 1.4rem; position: relative; margin-bottom: var(--sp-2); }
 .round li::before { content: ""; position: absolute; left: 0.15rem; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--rule-strong); }
 .round li.did::before { background: var(--ink-3); border-radius: 1px; }
-.round li.win::before { content: "\2713"; width: auto; height: auto; background: none; color: #2C6B52; font-weight: 700; top: 0; left: 0.1rem; font-size: 0.95em; }
+.round li.win::before { content: "\2713"; width: auto; height: auto; background: none; color: var(--positive); font-weight: 700; top: 0; left: 0.1rem; font-size: 0.95em; }
 .round li.miss::before { content: "\2715"; width: auto; height: auto; background: none; color: var(--accent); font-weight: 700; top: 0; left: 0.1rem; font-size: 0.9em; }
 .round__media { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
 .round__media .phone { flex: 1 1 7.5rem; max-width: 11rem; }
