@@ -66,6 +66,12 @@ All tokens live in `:root` at the top of `style.css`. To retheme, change those a
 - **`style.css` and `script.js` are linked with `?v=N`.** Bump the number when you change either file,
   or returning visitors (and aggressive local dev servers) will keep serving the old copy. This bit us
   repeatedly during the build.
+- **The rotating hero word (`.word-cycle`)** is an `inline-grid` with every word stacked in the same
+  cell, so the slot is intrinsically as wide as the longest one and the sentence never re-wraps as
+  the word changes. To edit the list, add/remove `.word-cycle__word` spans — keep `.is-in` on the
+  first so it stays legible with JS off, and keep the `visually-hidden` static word next to it (the
+  animated set is `aria-hidden`, so screen readers get one stable sentence, not a live region).
+  The full stop lives inside each word so it never detaches from short ones.
 - **Measured results use `--positive`, never the terracotta accent.** A rising metric in a warm red
   reads as a loss. `.work-card__outcome` and `.callout--outcome` are green; `.callout--insight` uses
   the lighter `--positive-wash` so the two callout types stay distinguishable. The terracotta accent

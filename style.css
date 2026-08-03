@@ -368,6 +368,37 @@ code, kbd, samp {
   content: "/"; color: var(--accent); font-weight: 400; margin-right: 0.6ch;
 }
 .hero__ethos { font-size: var(--step-1); color: var(--ink-2); max-width: 42ch; }
+
+/* Rotating word.
+   inline-grid with every word stacked in the same cell (grid-area 1/1) means
+   the slot is intrinsically as wide as the LONGEST word, so the rest of the
+   sentence never reflows as the word changes — no re-wrapping mid-paragraph.
+   The words themselves are aria-hidden; a visually-hidden static word next to
+   them gives assistive tech one stable sentence instead of a live region that
+   re-announces every few seconds. */
+.word-cycle {
+  display: inline-grid;
+  vertical-align: bottom;
+  text-align: left;
+  color: var(--accent);
+  font-weight: 600;
+}
+.word-cycle__word {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(0.3em);
+  transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out);
+}
+/* .is-in is present in the markup on the first word, so it stays legible with
+   JavaScript disabled or still loading. */
+.word-cycle__word.is-in  { opacity: 1; transform: none; }
+.word-cycle__word.is-out { opacity: 0; transform: translateY(-0.3em); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* JS also skips the cycle entirely — this just guards the initial paint. */
+  .word-cycle__word { transition: none; }
+}
 .hero__meta {
   display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4);
   font-size: var(--step--1); color: var(--ink-3);

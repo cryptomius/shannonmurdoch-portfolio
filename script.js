@@ -248,9 +248,47 @@
   }
 
   /* ------------------------------------------------------------------------
+     Rotating word in the hero sentence
+     The first word carries .is-in from the markup, so with JS off (or under
+     prefers-reduced-motion) it simply stays put and the sentence reads normally.
+     ------------------------------------------------------------------------ */
+  function initWordCycle() {
+    if (reduceMotion) return;
+    var roots = document.querySelectorAll('[data-word-cycle]');
+    if (!roots.length) return;
+
+    var HOLD = 2600;   // time each word is legible
+    var FADE = 400;    // must match the CSS transition
+
+    Array.prototype.forEach.call(roots, function (root) {
+      var words = root.querySelectorAll('.word-cycle__word');
+      if (words.length < 2) return;
+      var i = 0;
+
+      setInterval(function () {
+        // Don't burn cycles (or desync) while the tab is in the background.
+        if (document.hidden) return;
+
+        var outgoing = words[i];
+        outgoing.classList.remove('is-in');
+        outgoing.classList.add('is-out');
+
+        i = (i + 1) % words.length;
+        words[i].classList.remove('is-out');
+        words[i].classList.add('is-in');
+
+        // Reset the outgoing word to the "waiting below" state once it's
+        // invisible, so it rises into place again on its next turn.
+        setTimeout(function () { outgoing.classList.remove('is-out'); }, FADE);
+      }, HOLD);
+    });
+  }
+
+  /* ------------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------------ */
   function boot() {
+    initWordCycle();
     initNav();
     initHeader();
     initReveal();
