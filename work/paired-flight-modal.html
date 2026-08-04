@@ -58,8 +58,7 @@
       <p class="eyebrow">Case study 01 &middot; Webjet (ASX:WEB)</p>
       <h1>Unblocking a purchase-path dead-end worth half a million a month</h1>
       <p class="cs-hero__lede">
-        Customers who selected a paired international fare landed on a screen where every returning flight appeared
-        unavailable. The business had circled this for two years with three unbuilt solutions on the table.
+        Customers searching for an international flight landed on a screen where every returning flight appeared unavailable. This high-traffic flow needed a leader to deliver a derisked solution.
       </p>
     </div>
   </header>
@@ -73,7 +72,7 @@
       </div>
       <div class="cs-stat">
         <dt>Team</dt>
-        <dd>Me as UX lead, with the product owner, front-end team, UI dev team and Analytics</dd>
+        <dd>Me as UX lead, liaising with the product manager, product owner, UI dev team and Analytics</dd>
       </div>
       <div class="cs-stat">
         <dt>Duration</dt>
@@ -83,15 +82,15 @@
         <dt>Tools</dt>
         <dd>
           <div class="cs-stat__tags">
-            <span class="chip">Sketch</span><span class="chip">Sketch Measure</span><span class="chip">InVision</span>
-            <span class="chip">UserTesting.com</span><span class="chip">UI Pattern Library</span><span class="chip">Conversion analytics</span>
+            <span class="chip">Sketch</span><span class="chip">InVision</span>
+            <span class="chip">UserTesting.com</span><span class="chip">UI Pattern Library</span><span class="chip">Tableau</span><span class="chip">Google Analytics</span>
           </div>
         </dd>
       </div>
       <div class="cs-stat">
         <dt>Outcome</dt>
-        <dd><strong>+0.2%</strong> Hybrid Matrix, <strong>+0.4%</strong> International Matrix conversion &mdash;
-        <strong>&asymp; +$500k AUD TTV per month</strong></dd>
+        <dd><strong>+0.2%</strong> Transtasman Matrix, <strong>+0.4%</strong> Long-haul Matrix conversion &ndash;
+        <strong>&asymp; +$500k AUD revenue per month</strong></dd>
       </div>
     </dl>
   </div>
@@ -110,7 +109,7 @@
           <li><a href="#rounds">Four rounds of testing</a></li>
           <li><a href="#final">The design that shipped</a></li>
           <li><a href="#impact">What it was worth</a></li>
-          <li><a href="#next">What I&rsquo;d do next</a></li>
+          <li><a href="#future">Future enhancements</a></li>
           <li><a href="#learned">What I learned</a></li>
         </ul>
       </aside>
@@ -124,24 +123,22 @@
             <h2>A dead end that looked like a bug</h2>
           </div>
           <div class="cs-body">
-            <p>When someone searched for a return flight, Webjet displayed the results in one of three different ways
-            depending on the route and what the airlines made available:</p>
-            <ul>
-              <li><strong>Domestic Matrix</strong> &mdash; one-way fares out, one-way fares back. Mix and match freely.</li>
-              <li><strong>International Matrix &amp; Hybrid Ribbon</strong> &mdash; paired fares only. You must return
-              with the same carrier, on the flights the airline has fixed to that outbound.</li>
-              <li><strong>Hybrid Matrix</strong> &mdash; both kinds in the same grid, which is where trans-Tasman routes
-              landed.</li>
-            </ul>
-            <p>Paired fares were marked with a small &lsquo;R&rsquo; icon. Select one, and most prices in the returning
-            matrix greyed out &mdash; because only a handful of returning flights were valid with that fare. Nothing
+            <p>Webjet has an unique user interface for selecting flights internally called 'the matrix'.</p>
+            
+            <p>Depending on the underlying fare structure, some or all international return fares get marked with a small &lsquo;R&rsquo; icon. Select one, and most prices in the returning
+            matrix greyed out &ndash; because only a handful of returning flights were valid with that fare. Nothing
             explained this. Customers had to hunt the grid for the one matching price.</p>
           </div>
 
           <figure class="figure figure--wash">
             <img src="../images/work/paired-flight-modal/01-legacy-matrix-r-icon.webp" width="1400" height="1059" alt="The legacy Webjet flight matrix. Paired fares are marked with a small R icon and, once selected, most returning prices grey out." loading="lazy" decoding="async">
             <figcaption><strong>Before.</strong> The two questions people asked out loud in testing were
-            &ldquo;why does this have an &lsquo;R&rsquo; next to it?&rdquo; and &ldquo;why are all my returning flight
+            &ldquo;why does this have an &lsquo;R&rsquo; next to it?&rdquo; and ...</figcaption>
+          </figure>
+
+          <figure class="figure figure--wash">
+            <img src="../images/work/paired-flight-modal/disabled-return-flights-matrix.webp" width="1497" height="1131" alt="The legacy Webjet flight matrix. Paired fares are marked with a small R icon and, once selected, most returning prices grey out." loading="lazy" decoding="async">
+            <figcaption>&ldquo;why are all my returning flight
             options unavailable?&rdquo;</figcaption>
           </figure>
 
@@ -150,9 +147,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
               The real problem
             </p>
-            <p>This wasn&rsquo;t a layout issue. Customers concluded the site was broken or sold out, and left. A
-            purchase path that silently punishes people for choosing the cheapest fare is a revenue problem wearing a
-            usability costume.</p>
+            <p>Customers concluded the site was broken or sold out, and left. This was a
+            usability issue silently &amp; continually impacting revenue.</p>
           </div>
         </section>
 
@@ -163,30 +159,39 @@
             <h2>What I inherited: three solutions, none built</h2>
           </div>
           <div class="cs-body">
-            <p>Normally I&rsquo;d open a project like this with a discovery phase. Here I didn&rsquo;t need to &mdash; and
-            saying so mattered, because the team&rsquo;s patience for another round of research on a known problem was
-            thin. The product team had already discussed it at length. Sketched proposals were sitting on the server
+            <p>The working method I&rsquo;d implemented for product design projects at Webjet is called the <strong>Double Diamond</strong>. The method ensures a comprehensive understanding of the problem space is achieved before moving into the solution phase, and that ideation is separated from evaluation.</p>
+            
+          </div>
+          <figure class="figure figure--wash">
+              <img src="../images/work/paired-flight-modal/17-double-diamond.webp" width="549" height="353" alt="Double Diamond diagram: discover, define, develop, deliver, with divergent and convergent phases labelled." loading="lazy" decoding="async">
+              <figcaption>The Double Diamond (British Design Council, 2005), used as the team&rsquo;s working method.</figcaption>
+            </figure>
+          <div class="cs-body">
+            
+            <p>For this project the product team had already discussed the issue at length and sketched proposals were sitting on the server
             from <strong>June 2014</strong>, eight months before I joined.</p>
+            <p>As the problem definition was clear (Discover &amp; Define complete) and the team had already explored potential solutions (Develop), I decided to focus on validating the ideas (Deliver).</p>
+            <p>Initial ideation:</p>
           </div>
 
           <div class="figure-row figure-row--3">
             <figure class="figure figure--wash">
               <img src="../images/work/paired-flight-modal/02-sketch-solution-a.webp" width="1400" height="825" alt="Hand sketch, solution A: duplicate the valid returning paired fares and shift them to the top-left of the returning matrix." loading="lazy" decoding="async">
-              <figcaption><strong>A.</strong> Duplicate the valid paired returning fares and lift them to the top of the results.</figcaption>
+              <figcaption><strong>A.</strong> Duplicate available returning fares and lift them to the top of the results list (increase visibility).</figcaption>
             </figure>
             <figure class="figure figure--wash">
               <img src="../images/work/paired-flight-modal/03-sketch-solution-b.webp" width="1400" height="840" alt="Hand sketch, solution B: hide non-paired fares except a few at a similar price point or departure time." loading="lazy" decoding="async">
-              <figcaption><strong>B.</strong> Hide the non-paired fares, keeping only a few at a similar price or departure time.</figcaption>
+              <figcaption><strong>B.</strong> Hide the unavailable fares, keeping only a few at a similar price or departure time (choice reduction).</figcaption>
             </figure>
             <figure class="figure figure--wash">
               <img src="../images/work/paired-flight-modal/04-sketch-solution-c.webp" width="1400" height="843" alt="Hand sketch, solution C: present the paired options in a modal with a fast route back to departing flight selection." loading="lazy" decoding="async">
-              <figcaption><strong>C.</strong> Put the paired options in a modal, with a fast route back if none of them suit.</figcaption>
+              <figcaption><strong>C.</strong> Put the available return fare options in a modal, with a fast route back if none of them suit.</figcaption>
             </figure>
           </div>
 
           <div class="cs-body mt-6">
-            <p>Solution C was the direction the product team chose, and they mocked it up in <strong>January
-            2015</strong>. Then it stalled &mdash; because it was a significant change to a revenue-critical flow, and
+            <p>The product team had mocked up Solution C in <strong>January
+            2015</strong> but it stalled as it was a significant change to a revenue-critical flow, and
             nobody could say with confidence that customers would understand it.</p>
           </div>
 
@@ -201,8 +206,8 @@
               Decision: skip discovery, spend the time on validation
             </p>
             <p>The problem was well understood and a solution direction already had internal agreement. Re-running
-            discovery would have burnt credibility for no new information. What was <em>missing</em> was evidence that
-            people could actually use it &mdash; so I moved the entire research budget for this project downstream into
+            discovery would have rendered no new information. What was <em>missing</em> was evidence that
+            people could actually use it &mdash; so I moved the entire budget for this project downstream into
             prototype testing.</p>
           </div>
         </section>
@@ -215,25 +220,16 @@
           </div>
           <div class="cs-body">
             <p>I picked the project up in <strong>March 2016</strong>, while working through a broader set of usability
-            issues in the matrix results interface. First move was a mockup built to <a href="ui-pattern-library.html">UI
-            Pattern Library</a> standards &mdash; buttons, notifications and type all conformant, so that the thing we
-            tested was the thing engineering could actually build without a spec argument.</p>
-            <p>The team ran on the <strong>Double Diamond</strong>, which I&rsquo;d embedded as our working methodology.
-            The part that earns its keep is not the shape &mdash; it&rsquo;s the explicit separation of divergent from
-            convergent thinking. Without it, fledgling ideas get killed with &ldquo;we can&rsquo;t do that&rdquo; before
-            anyone has established whether we can.</p>
+            issues in the matrix results interface. First move was a mockup built to the <a href="ui-pattern-library.html">UI
+            Pattern Library</a> standards that I&rsquo;d established the year prior.</p>
+           
           </div>
 
-          <div class="figure-row">
-            <figure class="figure figure--wash">
-              <img src="../images/work/paired-flight-modal/17-double-diamond.webp" width="549" height="353" alt="Double Diamond diagram: discover, define, develop, deliver, with divergent and convergent phases labelled." loading="lazy" decoding="async">
-              <figcaption>The Double Diamond (British Design Council, 2005), used as the team&rsquo;s working method.</figcaption>
-            </figure>
+            
             <figure class="figure figure--wash">
               <img src="../images/work/paired-flight-modal/06-ux-initial-mockup-2016.webp" width="1268" height="727" alt="First UX team mockup of the paired flight modal, built to UI Pattern Library standards." loading="lazy" decoding="async">
-              <figcaption>My first mockup, March 2016 &mdash; pattern-library conformant so it was buildable as drawn.</figcaption>
+              <figcaption>My first mockup, March 2016 &ndash; UI pattern-library conformant.</figcaption>
             </figure>
-          </div>
         </section>
 
         <!-- 04 -->
@@ -243,20 +239,28 @@
             <h2>Prototype and task design</h2>
           </div>
           <div class="cs-body">
-            <p>Two scenarios, run back to back. We hadn&rsquo;t tested the Matrix much, so scenario one was a plain
-            cheapest-flight task that would give us general feedback on the whole interface. Scenario two was the one
-            that mattered.</p>
+            <p>Prior to this project I secured an annual budget for remote usability studies. I hadn&rsquo;t tested the Matrix, so my first scenario was a plain
+            cheapest-flight task that would give us general feedback on this unique interface.</p> <p>The second scenario focused on the new modal I&rsquo;d created.</p>
+            
           </div>
 
-          <div class="callout callout--decision">
-            <p class="callout__label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-              Decision: test the worst case, not the happy path
-            </p>
-            <p>Scenario two deliberately forced people into the modal <em>and</em> guaranteed it would not contain a
-            flight matching their brief. Anyone can design a modal that works when the answer is inside it. The whole
-            failure mode we were fixing was what happens when it isn&rsquo;t &mdash; so that&rsquo;s what I put in front
-            of people.</p>
+          
+
+          
+
+          <figure class="figure figure--wash">
+            <img src="../images/work/paired-flight-modal/tasks-for-usability-studies.png" width="960" height="540" alt="Tasks for usability studies" loading="lazy" decoding="async">
+            <figcaption>Remote usability study context, questions &amp; tasks.</figcaption></figure>
+
+            <div class="cs-body mt-6">
+            <p>Writing unmoderated usability study plans is an art. You have to empower the participant with a relatable scenario, extract their mental model, and craft tasks that avoid leading the customer or encouraging unnatural behaviour. I used the opening task to capture their <strong>mental model</strong> &mdash; asking what factors would drive
+            their choice <em>before</em> they saw any UI. Where the interface and the mental model diverge is where the
+            usability problems often live.</p>
+            </div>
+            
+            <div class="cs-body mt-6">
+            <p>The final task revealed what we&rsquo;d been testing and invited them to share what they thought of it.
+            That final 'reflection' prompt produced some of the most useful insights as it invited the participant to be a co-creator (and not slam the door once the study was complete).</p>
           </div>
 
           <div class="figure-row mt-6">
@@ -270,15 +274,20 @@
             </figure>
           </div>
 
-          <div class="cs-body mt-6">
-            <p>Then the tasks. Writing these is the part people underestimate: you cannot hand participants knowledge
-            an average customer wouldn&rsquo;t have, or you test your own explanation rather than the interface. I also
-            used the opening task to capture their <strong>mental model</strong> &mdash; asking what factors would drive
-            their choice <em>before</em> they saw any UI. Where the interface and the mental model diverge is where the
-            usability problems live.</p>
-            <p>The final task revealed what we&rsquo;d been testing and invited them to say what they thought of it.
-            That last prompt has produced some of the most useful comments I&rsquo;ve ever collected.</p>
+          <div class="cs-body">
+            <p>At the time, Invision App was the preferred tool for creating simple interactive prototypes. Now, Figma-integrated prototyping solutions are abundant.</p>
           </div>
+
+          <div class="callout callout--decision">
+            <p class="callout__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Decision: test the worst case, not the happy path
+            </p>
+            <p>My testing plan deliberately forced people into the modal <em>and</em> guaranteed it would not contain a
+            flight matching their requirements. It was essential to test this failure path to ensure the solution would be effective in real-world use.</p>
+          </div>
+
+          
         </section>
 
         <!-- 05 -->
@@ -289,7 +298,7 @@
           </div>
           <div class="cs-body">
             <p>Each round: unmoderated remote studies through UserTesting.com, observations written up, changes made,
-            retest. Two of these rounds told me my fix hadn&rsquo;t worked.</p>
+            retest.</p>
           </div>
 
           <div class="rounds">
@@ -312,7 +321,7 @@
                 </ul>
                 <h4>Read</h4>
                 <ul>
-                  <li>Steve Krug&rsquo;s line from <em>Don&rsquo;t Make Me Think</em> &mdash; &ldquo;people don&rsquo;t read, they scan&rdquo; &mdash; was doing a lot of work in that debrief</li>
+                  <li>Steve Krug&rsquo;s insight from his book <em>Don&rsquo;t Make Me Think</em> &mdash; &ldquo;people don&rsquo;t read, they scan&rdquo; &mdash; was evidenced loud &amp; clear.</li>
                 </ul>
               </div>
               <div class="round__media">
@@ -336,7 +345,7 @@
                 <h4>What happened</h4>
                 <ul>
                   <li class="win">The &lsquo;+$254&rsquo; killed the total-versus-extra confusion outright</li>
-                  <li class="miss">&ldquo;Return fare&rdquo; didn&rsquo;t resonate &mdash; to customers <em>every</em> flight they were booking was a return fare. We needed a different word</li>
+                  <li class="miss">&ldquo;Return fare&rdquo; didn&rsquo;t resonate &mdash; to customers <em>every</em> flight they were booking was a return fare. I needed a different word</li>
                   <li class="miss">Prominent or not, people still didn&rsquo;t read it. Too wordy</li>
                 </ul>
               </div>
@@ -360,7 +369,7 @@
                 <h4>What happened</h4>
                 <ul>
                   <li class="miss">Still unread. Still confused about why the modal appeared</li>
-                  <li class="miss">Too much to absorb at a glance &mdash; I had responded to &ldquo;they don&rsquo;t understand&rdquo; by writing <em>more words</em>, which is exactly the wrong instinct</li>
+                  <li class="miss">Too much to absorb at a glance &mdash; I had responded to &ldquo;they don&rsquo;t understand&rdquo; by writing <em>more words</em>, rather than 'chunking' information delivery</li>
                 </ul>
               </div>
               <div class="round__media">
@@ -379,7 +388,7 @@
                 <h4>What I changed</h4>
                 <ul>
                   <li class="did">Renamed the concept: &lsquo;R&rsquo; for Return Flight became <strong>&lsquo;P&rsquo; for Paired Flight</strong></li>
-                  <li class="did">Split one block of copy into two separate parts &mdash; <em>what this is</em>, and <em>what to do if you don&rsquo;t want it</em></li>
+                  <li class="did">Split the explainer into two separate parts &mdash; <em>what this is</em>, and <em>what to do if you don&rsquo;t want it</em></li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
@@ -417,21 +426,21 @@
             <h2>The design that shipped</h2>
           </div>
           <div class="cs-body">
-            <p>Round four validated the concept. The remaining work was craft: making vertical space earn its keep, and
-            handling the messy real-world cases the mockups had quietly ignored.</p>
+            <p>Round four validated the concept. The remaining work was craft: tightening vertical space, and
+            handling some messy real-world cases the mockups had overlooked.</p>
             <ul>
-              <li><strong>Higher-contrast next-step instruction</strong> &mdash; the one line that had to survive scanning</li>
+              <li><strong>Higher-contrast next-step instruction</strong></li>
               <li><strong>Compressed vertically</strong> so more flight options sat above the fold</li>
-              <li><strong>Details pop-over on hover</strong>, keeping full flight detail available without occupying permanent space</li>
-              <li><strong>Peeking</strong> for three or more options &mdash; show half a row plus the scrollbar so people know to keep going</li>
-              <li>Accommodated multiple flight numbers, carriers and aircraft types per pairing, which the earlier mockups had all assumed away</li>
+              <li><strong>Flight details pop-over on hover</strong>, as per Matrix convention</li>
+              <li><strong>Peeking</strong> for three or more options (show half a row plus the scrollbar so people know to keep going)</li>
+              
             </ul>
           </div>
 
           <figure class="figure figure--wash">
             <img src="../images/work/paired-flight-modal/13-final-design.webp" width="1222" height="743" alt="The final paired flight modal in production: P badge, short two-part explanation, departing flight summary, and a list of selectable returning flights with a peeking row." loading="lazy" decoding="async">
-            <figcaption><strong>Shipped.</strong> Short two-part message, high-contrast recovery path, and a peeking row
-            signalling there is more to scroll.</figcaption>
+            <figcaption><strong>Shipped.</strong> Short explainers, comprehensive flight information, and a peeking row
+            signalling there is more upon scroll.</figcaption>
           </figure>
         </section>
 
@@ -442,8 +451,7 @@
             <h2>What it was worth</h2>
           </div>
           <div class="cs-body">
-            <p>Event tracking went in with the interface, so we could read the conversion shift by matrix type rather
-            than as one blended number. The split matters, because it tells you the change did what we said it would.</p>
+            <p>Event tracking went in with the interface, so we could read the conversion shift by matrix type (which changes depending on the searched flight route).</p>
           </div>
 
           <div class="figure-row">
@@ -466,9 +474,7 @@
               Outcome
             </p>
             <p><strong>&asymp; +$500,000 AUD in total transaction value every month</strong>, from resolving a single
-            usability dead-end. The uplift was twice as large where the modal was unavoidable, which is exactly what
-            you&rsquo;d predict if the modal was the thing that changed &mdash; the pattern of the result is as
-            reassuring as the size of it.</p>
+            usability dead-end. The uplift was twice as large where the modal was unavoidable.</p>
           </div>
 
           <div class="cs-body mt-6">
@@ -494,17 +500,17 @@
         </section>
 
         <!-- 08 -->
-        <section class="cs-chapter" id="next">
+        <section class="cs-chapter" id="future">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">08</span>
-            <h2>What I&rsquo;d have done next</h2>
+            <h2>Future enhancements</h2>
           </div>
           <div class="cs-body">
-            <p>Shipping is not finishing. Three enhancements were specified and queued behind other work:</p>
+            <p>Once the initial implementation was complete, additional usability enhancements were identified, which were added to the product backlog:</p>
             <ul>
               <li><strong>Make opening and closing the modal instant, with no page scroll.</strong> A platform
-              limitation at the time, and the single biggest remaining friction.</li>
-              <li><strong>Turn dismissed paired fares purple</strong> &mdash; the web-standard visited-link colour
+              limitation at the time, that distracted customers and added to the cognitive load.</li>
+              <li><strong>Turn dismissed paired fares purple</strong> &mdash; the web-standard visited-link colour (purple) is a strong visual cue that the option has been seen and rejected
               &mdash; so people don&rsquo;t reopen options they&rsquo;ve already rejected. Cheap, and it removes real
               cognitive load.</li>
               <li><strong>Combine matrix columns for same-flight paired fares.</strong> Two fares departing at the same
@@ -532,18 +538,11 @@
               Four things I took from this
             </p>
             <ul>
-              <li><strong>When people don&rsquo;t understand, adding words makes it worse.</strong> I ran that experiment
-              twice before I accepted it. Rounds two and three were both &ldquo;explain harder&rdquo;, and both failed.
-              The fix was fewer words and a better one.</li>
-              <li><strong>Borrowed vocabulary competes with the meaning people already have.</strong> A new concept
-              sometimes needs a new name. &ldquo;Paired flight&rdquo; worked precisely because nobody arrived with a
+              <li><strong>People don't read - they scan.</strong> Chunking information into smaller, scannable pieces improves comprehension and decision-making.</li>
+              <li><strong>Don't be afraid to coin your own terms.</strong> The &ldquo;Paired flight&rdquo; term worked precisely because nobody arrived with a
               definition of it.</li>
-              <li><strong>Test the failure case.</strong> The scenario where the answer <em>isn&rsquo;t</em> in the modal
-              was where all the value was. A happy-path test would have passed in round one and shipped the same dead
-              end with nicer typography.</li>
-              <li><strong>Instrument before you launch, and segment the result.</strong> A blended conversion number
-              would have been arguable. Two segments moving in proportion to how often people saw the change is a much
-              harder result to talk your way out of &mdash; in either direction.</li>
+              <li><strong>Leverage the familiar.</strong> Building using the internal UI Pattern Library accelerated protoype production &amp; allowed me to focus on the user experience.</li>
+              <li><strong>Measure your impact.</strong> Having a reliable baseline and the ability to segment based on what users experience helps justify future spend on Product research.</li>
             </ul>
           </div>
         </section>
