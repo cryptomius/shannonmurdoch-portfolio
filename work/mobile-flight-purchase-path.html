@@ -19,6 +19,32 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css?v=6">
+<style>
+/* Page-scoped: at-a-glance summary panel, and the two-part structure.
+   Uses only existing design tokens so it stays in step with style.css. */
+.cs-summary{margin-top:clamp(2rem,4vw,3rem);padding:clamp(1.5rem,3vw,2.25rem);background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg)}
+.cs-summary__label{font-size:var(--step--2);font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-4);margin:0 0 var(--sp-4);font-family:var(--font-sans)}
+.cs-summary__lede{font-size:var(--step-1);line-height:1.5;color:var(--ink);margin:0;max-width:56ch}
+.cs-summary__grid{display:grid;gap:clamp(1.25rem,3vw,2.5rem);margin-top:clamp(1.5rem,3vw,2rem)}
+@media(min-width:44rem){.cs-summary__grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}}
+.cs-summary__col h3{font-family:var(--font-sans);font-size:var(--step--2);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin:0 0 var(--sp-3)}
+.cs-summary__col p{font-size:var(--step--1);color:var(--ink-2);margin:0 0 var(--sp-3);max-width:none}
+.cs-summary__col p:last-child{margin-bottom:0}
+.cs-summary ol{margin:0;padding-left:1.25rem;max-width:none}
+.cs-summary ol li{font-size:var(--step--1);color:var(--ink-2);margin-bottom:var(--sp-3);padding-left:.2rem}
+.cs-summary ol li:last-child{margin-bottom:0}
+.cs-summary ol li strong{color:var(--ink)}
+.cs-summary__read{margin-top:clamp(1.25rem,3vw,1.75rem);padding-top:var(--sp-4);border-top:1px solid var(--rule);font-size:var(--step--1);color:var(--ink-2);max-width:none}
+.cs-part{margin-top:clamp(2.5rem,5vw,4rem);padding-top:clamp(1.5rem,3vw,2rem);border-top:2px solid var(--ink)}
+.cs-part__eyebrow{font-family:var(--font-mono);font-size:var(--step--2);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 var(--sp-2)}
+.cs-part__title{font-size:var(--step-2);margin:0 0 var(--sp-4)}
+.cs-part p{color:var(--ink-2);max-width:62ch;margin:0}
+.cs-part-group:first-of-type .cs-part{margin-top:clamp(1.5rem,3vw,2.25rem)}
+.cs-part+.cs-chapter{border-top:0}
+.cs-chapter__head h3{font-size:var(--step-3);margin:0;font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.toc__part{font-size:var(--step--2);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin:var(--sp-4) 0 var(--sp-2);padding-left:.85rem}
+.toc ul>li:first-child .toc__part{margin-top:0}
+</style>
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -98,6 +124,44 @@
     </dl>
   </div>
 
+  <!-- ================= AT A GLANCE ================= -->
+  <div class="wrap">
+    <div class="cs-summary">
+      <h2 class="cs-summary__label">The short version</h2>
+      <p class="cs-summary__lede">A rebuild of the screens where a customer picks their flights &mdash; the last
+      decision before checkout, and the one where confusion turns straight into an abandoned booking.</p>
+
+      <div class="cs-summary__grid">
+        <div class="cs-summary__col">
+          <h3>Four sets of input, resolved in this order</h3>
+          <ol>
+            <li><strong>The agency</strong>, engaged before I joined &mdash; concepts worth keeping, wrapped in an
+            interface the flight API could never have filled.</li>
+            <li><strong>Product &amp; Marketing</strong> &mdash; a featured airline slot and fare rules in;
+            &lsquo;compare fares&rsquo; out, as beyond MVP.</li>
+            <li><strong>The UI dev team</strong> &mdash; buildability feedback taken on the near-final card, while
+            it could still change.</li>
+            <li><strong>Customers</strong> &mdash; six rounds of remote usability studies. The only input with a
+            veto.</li>
+          </ol>
+        </div>
+        <div class="cs-summary__col">
+          <h3>Why it ran to six rounds</h3>
+          <p>Webjet was risk-averse, and an in-house UX practice was still a new idea there. So alongside the design
+          work I was making an argument: that testing a revenue-critical path <em>before</em> building it is how you
+          take risk out of it, and that when the evidence and the designer disagree, the customer wins.</p>
+          <p>Six rounds is what that argument looks like in practice &mdash; including the round where it obliged me
+          to remove my own idea.</p>
+        </div>
+      </div>
+
+      <p class="cs-summary__read"><strong>How this is laid out.</strong> <strong>Part one</strong> is the internal
+      work &mdash; inheriting, adapting and specifying, with every stakeholder reconciled before a customer saw
+      anything. <strong>Part two</strong> is the six rounds of usability testing that decided what actually shipped.
+      If you only read one, read part two.</p>
+    </div>
+  </div>
+
   <!-- ================= BODY ================= -->
   <div class="wrap section section--tight">
     <div class="cs-layout">
@@ -105,25 +169,39 @@
       <aside class="toc" aria-label="On this page">
         <p class="toc__label">On this page</p>
         <ul>
+          <li><p class="toc__part">Part one &middot; Internal</p></li>
           <li><a href="#inherited">What I inherited</a></li>
           <li><a href="#wireframes">The agency wireframes</a></li>
           <li><a href="#passes">Two passes before testing</a></li>
           <li><a href="#prototype">Wireframe to prototype</a></li>
           <li><a href="#paired">The paired flight flow</a></li>
           <li><a href="#density">What earns its pixels</a></li>
-          <li><a href="#rounds">Six rounds</a></li>
-          <li><a href="#final">The design that went to build</a></li>
+          <li><p class="toc__part">Part two &middot; Customers</p></li>
+          <li><a href="#rounds">Six rounds of testing</a></li>
+          <li><a href="#final">The design that shipped</a></li>
+          <li><p class="toc__part">Close</p></li>
           <li><a href="#learned">What I learned</a></li>
         </ul>
       </aside>
 
       <div>
 
+
+        <section class="cs-part-group" aria-labelledby="part-one">
+        <div class="cs-part">
+          <p class="cs-part__eyebrow">Part one</p>
+          <h2 class="cs-part__title" id="part-one">Shaping it internally</h2>
+          <p>Everything in this half happened before a single customer saw anything. Inheriting the agency&rsquo;s
+          work, reconciling it with what the API could actually return, folding in Product, Marketing and
+          engineering, and specifying every variant flow &mdash; so that when testing began we&rsquo;d be spending
+          the research budget on the questions only customers could answer.</p>
+        </div>
+
         <!-- 01 -->
         <section class="cs-chapter" id="inherited">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">01</span>
-            <h2>What I inherited: two products that had drifted apart</h2>
+            <h3>What I inherited: two products that had drifted apart</h3>
           </div>
           <div class="cs-body">
             <p>Webjet reached smartphone customers through a mobile web site and an iOS app that had been built
@@ -170,14 +248,17 @@
           <div class="callout callout--insight">
             <p class="callout__label">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
-              How I framed my job on this
+              The organisational problem behind the design problem
             </p>
             <p>Flight results is the screen where a customer decides whether to buy. Every moment of hesitation in
             it &mdash; not knowing which leg you&rsquo;re choosing, not trusting the order of the list, not knowing
-            how to back out &mdash; is a chance to abandon. So I treated the project as <strong>de-risking a
-            revenue-generating purchase path</strong> rather than redesigning a page. That framing decides what you
-            do with disagreement: my opinion is a hypothesis, and the only thing that settles it is watching
-            customers use the interface.</p>
+            how to back out &mdash; is a chance to abandon. That part was easy to argue.</p>
+            <p>The harder part was organisational. Webjet was risk-averse, and an in-house UX practice was still new
+            there. Proposing to test a revenue-critical flow six times <em>before</em> building any of it does not
+            sound like the cautious option to a business that measures caution in features shipped. So this project
+            was always going to be two jobs at once: designing the thing, and demonstrating the method &mdash;
+            that research is how you take risk <em>out</em> of a critical path, and that the person who decides
+            whether a design works is the customer using it, not the designer who drew it.</p>
           </div>
         </section>
 
@@ -185,7 +266,7 @@
         <section class="cs-chapter" id="wireframes">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">02</span>
-            <h2>The agency wireframes, and the constraint they missed</h2>
+            <h3>The agency wireframes, and the constraint they missed</h3>
           </div>
           <div class="cs-body">
             <p>An external agency had produced wireframes before I was involved. Much of the interface they proposed
@@ -222,7 +303,7 @@
         <section class="cs-chapter" id="passes">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">03</span>
-            <h2>Two wireframe passes before anyone saw it</h2>
+            <h3>Two wireframe passes before anyone saw it</h3>
           </div>
           <div class="cs-body">
             <p><strong>Pass one</strong> reconciled the agency structure with reality: depart and return tabs, a
@@ -259,7 +340,7 @@
         <section class="cs-chapter" id="prototype">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">04</span>
-            <h2>From wireframe to clickable prototype</h2>
+            <h3>From wireframe to clickable prototype</h3>
           </div>
           <div class="cs-body">
             <p>High-fidelity mocks next, then clickable prototypes in InVision for remote usability testing. Two
@@ -337,7 +418,7 @@
         <section class="cs-chapter" id="paired">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">05</span>
-            <h2>The paired flight flow, borrowed rather than reinvented</h2>
+            <h3>The paired flight flow, borrowed rather than reinvented</h3>
           </div>
           <div class="cs-body">
             <p>Some fares only allow a return on a specific set of flights with the same airline. On desktop this
@@ -389,7 +470,7 @@
         <section class="cs-chapter" id="density">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">06</span>
-            <h2>What earns its pixels</h2>
+            <h3>What earns its pixels</h3>
           </div>
           <div class="cs-body">
             <p>Travel products are information-dense and a phone gives you one column, so the last pass before
@@ -406,6 +487,11 @@
             box, duration and stops onto a single line, airport codes dropped to save space, and more padding top
             and bottom. Every one of those made the card easier to scan as well as easier to build &mdash; which is
             what you would hope for from feedback given by the people who have to build it.</p>
+            <p>That was the last input available to me inside the building. The agency&rsquo;s concepts had been
+            reconciled with the data contract, Product and Marketing had what they needed, engineering had signed
+            off on buildability, and the pattern library had settled everything it could. Which left exactly one
+            risk on a revenue-critical purchase path &mdash; and it was the one nobody at Webjet could settle by
+            having an opinion about it.</p>
           </div>
 
           <div class="phones">
@@ -426,16 +512,26 @@
           </div>
         </section>
 
+        </section>
+
+        <section class="cs-part-group" aria-labelledby="part-two">
+        <div class="cs-part">
+          <p class="cs-part__eyebrow">Part two</p>
+          <h2 class="cs-part__title" id="part-two">Handing the decision to customers</h2>
+          <p>Six rounds of remote usability studies through UserTesting.com. Two problems refused to die for three
+          straight rounds, one of my own fixes failed twice and had to be taken back out, and the round that finally
+          cleared both of them did it with one word and a rebuilt header.</p>
+        </div>
+
         <!-- 07 -->
         <section class="cs-chapter" id="rounds">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">07</span>
-            <h2>Six rounds, decided by customers</h2>
+            <h3>Round by round</h3>
           </div>
           <div class="cs-body">
-            <p>Each round: remote usability studies through UserTesting.com, observations written up, changes made,
-            retest. Two problems refused to die for three straight rounds &mdash; and the fix I chose for a third
-            problem failed twice.</p>
+            <p>The loop each time: run the studies, write up what I saw, change the design, run it again. What
+            follows is every round as it happened &mdash; including the two that went backwards.</p>
           </div>
 
           <div class="rounds">
@@ -680,7 +776,7 @@
         <section class="cs-chapter" id="final">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">08</span>
-            <h2>The design that went to build</h2>
+            <h3>The design that went to build</h3>
           </div>
           <div class="cs-body">
             <p>Sortable column headers with a single imperative and the date pinned above them. PROMOTION instead of
@@ -721,11 +817,13 @@
           </div>
         </section>
 
+        </section>
+
         <!-- 09 -->
         <section class="cs-chapter" id="learned">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">09</span>
-            <h2>What I learned</h2>
+            <h3>What I learned</h3>
           </div>
 
           <div class="callout callout--learn">
