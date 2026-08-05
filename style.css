@@ -703,6 +703,7 @@ code, kbd, samp {
    10. Panels / "looking for"
    -------------------------------------------------------------------------- */
 .panel-grid { display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.panel-grid--2col { grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
 .panel {
   background: var(--white);
   border: 1px solid var(--rule);
