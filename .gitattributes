@@ -1,0 +1,23 @@
+# Line endings
+# -------------
+# Every text file is stored in the repository with LF endings and checked out
+# with LF on every platform. `eol=lf` is set explicitly rather than left to
+# `core.eol=native` so that a Windows working tree is byte-identical to a Linux
+# or macOS one, and `git status` never reports whole-file line-ending churn.
+* text=auto eol=lf
+
+# Binary assets
+# -------------
+# Excluded from line-ending conversion and from textual diffing.
+*.webp  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rebuilding flight search for mobile — Shannon Murdoch</title>
-<meta name="description" content="Case study: six rounds of remote usability testing on Webjet's mobile flight purchase path, including two rounds that proved my fix made things worse. Agency wireframes the API couldn't serve, seven card types, and a loading screen with nothing to load.">
+<title>De-risking a mobile flight purchase path — Shannon Murdoch</title>
+<meta name="description" content="Case study: rebuilding Webjet's domestic flights mobile website from agency wireframes the flight API couldn't serve. Six rounds of remote usability studies decided what went to build — including reverting a fix customers rejected twice.">
 <link rel="canonical" href="https://shannonmurdoch.com/work/mobile-flight-purchase-path.html">
 <meta name="theme-color" content="#FBFAF7">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Shannon Murdoch">
 <meta property="og:url" content="https://shannonmurdoch.com/work/mobile-flight-purchase-path.html">
-<meta property="og:title" content="Rebuilding flight search for mobile — Webjet">
-<meta property="og:description" content="Six rounds of remote usability testing, two of them reversals. Including the round where I added a loading screen to content that was already loaded.">
+<meta property="og:title" content="De-risking a mobile flight purchase path — Webjet">
+<meta property="og:description" content="Six rounds of remote usability studies on a revenue-critical mobile purchase path. Two long-running confusion points eliminated, and one of my own fixes reverted.">
 <meta property="og:image" content="https://shannonmurdoch.com/images/og-shannon-murdoch.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://shannonmurdoch.com/images/og-shannon-murdoch.jpg">
@@ -47,6 +47,7 @@
 <main id="main">
   <article>
 
+  <!-- ================= HERO ================= -->
   <header class="cs-hero">
     <div class="wrap">
       <ol class="breadcrumb">
@@ -55,14 +56,16 @@
         <li>Mobile flight purchase path</li>
       </ol>
       <p class="eyebrow">Case study 02 &middot; Webjet (ASX:WEB)</p>
-      <h1>Six rounds of testing, two of which proved me wrong</h1>
+      <h1>Six rounds of testing to de-risk a mobile purchase path</h1>
       <p class="cs-hero__lede">
-        Rebuilding flight search for mobile, starting from agency wireframes the flight API couldn&rsquo;t serve. This
-        is the honest version, including the round where I added a loading screen to content that was already loaded.
+        Webjet&rsquo;s domestic flights mobile website, rebuilt from agency wireframes the flight API
+        couldn&rsquo;t serve. In a purchase path, confusion converts directly into lost revenue &mdash; so nothing
+        reached build on my judgement alone. Including the fix I took to test twice, and customers rejected twice.
       </p>
     </div>
   </header>
 
+  <!-- ================= STATS ================= -->
   <div class="wrap">
     <dl class="cs-statbar">
       <div class="cs-stat">
@@ -71,42 +74,45 @@
       </div>
       <div class="cs-stat">
         <dt>Team</dt>
-        <dd>Me as UX lead, with an external agency (initial wireframes), a visual design studio (hi-fi mocks), the UI dev
-        team, and Product &amp; Marketing stakeholders</dd>
+        <dd>Me as UX lead, with an external agency (initial wireframes), the UI dev team, and Product &amp;
+        Marketing stakeholders</dd>
       </div>
       <div class="cs-stat">
         <dt>Duration</dt>
-        <dd>Roughly two years alongside other work &mdash; six remote usability rounds</dd>
+        <dd>Six consecutive rounds of remote usability studies, all of them before build</dd>
       </div>
       <div class="cs-stat">
         <dt>Tools</dt>
         <dd>
           <div class="cs-stat__tags">
-            <span class="chip">Sketch</span><span class="chip">Sketch Measure</span><span class="chip">InVision</span>
+            <span class="chip">Sketch</span><span class="chip">InVision</span>
             <span class="chip">UserTesting.com</span><span class="chip">UI Pattern Library</span>
           </div>
         </dd>
       </div>
       <div class="cs-stat">
         <dt>Outcome</dt>
-        <dd>Both confusion points that survived rounds 1&ndash;3 eliminated; <strong>7 card types</strong> and every
-        paired-flight variant flow specified for build</dd>
+        <dd>Two confusion points that had survived three rounds <strong>eliminated</strong>; a fully specified,
+        evidence-backed design that went to build</dd>
       </div>
     </dl>
   </div>
 
+  <!-- ================= BODY ================= -->
   <div class="wrap section section--tight">
     <div class="cs-layout">
 
       <aside class="toc" aria-label="On this page">
         <p class="toc__label">On this page</p>
         <ul>
-          <li><a href="#start">Where it started</a></li>
-          <li><a href="#constraint">The constraint nobody costed</a></li>
-          <li><a href="#converge">Getting to a testable design</a></li>
-          <li><a href="#density">Density and seven card types</a></li>
+          <li><a href="#inherited">What I inherited</a></li>
+          <li><a href="#wireframes">The agency wireframes</a></li>
+          <li><a href="#passes">Two passes before testing</a></li>
+          <li><a href="#prototype">Wireframe to prototype</a></li>
+          <li><a href="#paired">The paired flight flow</a></li>
+          <li><a href="#density">What earns its pixels</a></li>
           <li><a href="#rounds">Six rounds</a></li>
-          <li><a href="#final">The design that shipped</a></li>
+          <li><a href="#final">The design that went to build</a></li>
           <li><a href="#learned">What I learned</a></li>
         </ul>
       </aside>
@@ -114,62 +120,90 @@
       <div>
 
         <!-- 01 -->
-        <section class="cs-chapter" id="start">
+        <section class="cs-chapter" id="inherited">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">01</span>
-            <h2>Where it started: two mobile products that had drifted apart</h2>
+            <h2>What I inherited: two products that had drifted apart</h2>
           </div>
           <div class="cs-body">
-            <p>Webjet served smartphone customers through a mix of independent mobile sites, responsive sites and a
-            native iOS app &mdash; built at different times, sometimes by different teams, with no in-house designer
-            across any of them. Flight search looked and behaved differently depending on which one you happened to
-            land on.</p>
-            <p>The inherited pattern had a real problem underneath the inconsistency: <strong>every cabin class got its
-            own top-level card</strong>. One flight could occupy four cards in a scrolling list, which made the results
-            page look like it had four times as many flights as it did. Expanding a card to reveal fare types was the
-            one part worth keeping.</p>
+            <p>Webjet reached smartphone customers through a mobile web site and an iOS app that had been built
+            separately. Search for a flight and what you got depended entirely on where you happened to land.</p>
+            <p><strong>Mobile web</strong> presented results as a dense sortable table &mdash; depart time, stops,
+            price &mdash; then sent you off to a <em>separate screen</em> to choose a fare type.</p>
           </div>
 
           <div class="phones">
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/01-legacy-mobile-web.webp" width="750" height="1334" alt="Legacy Webjet mobile web flight results: a dense table of departure times, stops and prices." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/01-legacy-mobile-web.webp" width="750" height="1334" alt="Legacy Webjet mobile web flight results: a dense sortable table of departure times, stops and prices, with a price-hold countdown in the header." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Legacy mobile web.</strong> Table-dense, with depart/return tabs.</figcaption>
+              <figcaption>Results as a sortable table.</figcaption>
             </figure>
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/18-legacy-fare-type-picker.webp" width="750" height="1334" alt="Legacy mobile web fare type selection listing Starter, Starter Plus and Starter Max options." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/18-legacy-fare-type-picker.webp" width="750" height="1334" alt="Legacy mobile web fare type selection on its own screen, listing Starter, Starter Plus and Starter Max options." loading="lazy" decoding="async">
               </div>
-              <figcaption>Fare selection as a separate step.</figcaption>
+              <figcaption>Fare choice on a screen of its own.</figcaption>
+            </figure>
+          </div>
+
+          <div class="cs-body mt-6">
+            <p>The <strong>iOS app</strong> used a different visual language entirely, and kept fare selection inside
+            the flight detail screen.</p>
+          </div>
+
+          <div class="phones">
+            <figure class="phone">
+              <div class="phone__screen">
+                <img src="../images/work/mobile-flight-purchase-path/02-legacy-ios-app.webp" width="750" height="1334" alt="Legacy Webjet iOS app flight results with a hero destination photograph and timeline-style flight cards." loading="lazy" decoding="async">
+              </div>
+              <figcaption>Hero imagery and timeline-style cards.</figcaption>
             </figure>
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/02-legacy-ios-app.webp" width="750" height="1334" alt="Legacy Webjet iOS app flight results with a hero destination image and a different card treatment." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/22-legacy-ios-fare-select.webp" width="750" height="1334" alt="Legacy iOS app fare selection inside the flight detail screen, listing Light Fare and Express Fare options with baggage allowances." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Legacy iOS app.</strong> A different visual language and a different flow.</figcaption>
+              <figcaption>Fares chosen in place, on a different flow again.</figcaption>
             </figure>
+          </div>
+
+          <div class="callout callout--insight">
+            <p class="callout__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+              How I framed my job on this
+            </p>
+            <p>Flight results is the screen where a customer decides whether to buy. Every moment of hesitation in
+            it &mdash; not knowing which leg you&rsquo;re choosing, not trusting the order of the list, not knowing
+            how to back out &mdash; is a chance to abandon. So I treated the project as <strong>de-risking a
+            revenue-generating purchase path</strong> rather than redesigning a page. That framing decides what you
+            do with disagreement: my opinion is a hypothesis, and the only thing that settles it is watching
+            customers use the interface.</p>
           </div>
         </section>
 
         <!-- 02 -->
-        <section class="cs-chapter" id="constraint">
+        <section class="cs-chapter" id="wireframes">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">02</span>
-            <h2>The constraint nobody had costed</h2>
+            <h2>The agency wireframes, and the constraint they missed</h2>
           </div>
           <div class="cs-body">
-            <p>An external agency had produced wireframes before I was involved. They were well considered as interaction
-            design &mdash; and largely unbuildable.</p>
-            <p>Webjet retrieved flight results in a <strong>single API call</strong>. A meaningful share of what the
-            wireframes showed simply wasn&rsquo;t in that payload, and fetching it would have meant additional calls the
-            MVP had no budget or latency headroom for. The wireframes also leaned on iconography to communicate fare
-            differences, which was both ambiguous to customers and more front-end work than the release could absorb.</p>
+            <p>An external agency had produced wireframes before I was involved. Much of the interface they proposed
+            could not be accomplished within the constraints of <strong>single API call content
+            retrieval</strong> &mdash; the data simply wasn&rsquo;t there to draw those screens.</p>
+            <p>The fare comparison also leaned on iconography to express the differences between fares. That was
+            ambiguous to read, and it carried more development work than the MVP allowed.</p>
+            <p>Two ideas in there were worth keeping. <strong>Cabin classes surfaced per flight</strong> rather than
+            buried, and &mdash; more importantly &mdash; <strong>the card expanding in place</strong>, so choosing a
+            fare happened on the results page. Our existing mobile site handed customers off to a separate screen to
+            pick a fare; keeping them in the list was obviously better. Where exactly those two ideas should live
+            took me two more passes to settle.</p>
           </div>
 
           <figure class="figure figure--wash">
-            <img src="../images/work/mobile-flight-purchase-path/03-agency-wireframes.webp" width="760" height="380" alt="External agency wireframes for mobile flight search, shown as a set of screens." loading="lazy" decoding="async">
-            <figcaption><strong>The agency wireframes.</strong> Good thinking; much of it not retrievable in one API call.</figcaption>
+            <img src="../images/work/mobile-flight-purchase-path/03-agency-wireframes.webp" width="760" height="380" alt="External agency wireframes for mobile flight search: a results list with Economy and Business price columns, and an expanded fare comparison table using icons to indicate fare differences." loading="lazy" decoding="async">
+            <figcaption><strong>The agency wireframes.</strong> Useful ideation &mdash; but more interface than a
+            single API call could fill, and more build than MVP could fund.</figcaption>
           </figure>
 
           <div class="callout callout--decision">
@@ -177,65 +211,112 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
               Decision: adapt rather than reject
             </p>
-            <p>The politically easy move was to bin the agency work and start again. Instead I kept what the payload
-            supported &mdash; cabin classes visible per flight was genuinely necessary &mdash; and rewrote the rest
-            against the actual data contract. Ten years of shipping production code is why I could tell which was which
-            in an afternoon rather than three sprints into build.</p>
+            <p>Binning the agency work outright would have been the easy call, and it would have thrown away the one
+            structural idea worth keeping. Instead I separated the concepts from the execution: keep what the data
+            contract supports, rebuild the rest against what the API actually returns. Finding this out at wireframe
+            stage costs an afternoon. Finding it out mid-sprint costs a sprint.</p>
           </div>
         </section>
 
         <!-- 03 -->
-        <section class="cs-chapter" id="converge">
+        <section class="cs-chapter" id="passes">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">03</span>
-            <h2>Getting to something worth testing</h2>
+            <h2>Two wireframe passes before anyone saw it</h2>
           </div>
           <div class="cs-body">
-            <p>Two wireframe passes before anything went near a user.</p>
+            <p><strong>Pass one</strong> reconciled the agency structure with reality: depart and return tabs, a
+            filter and sort strip, one top-level card per cabin class, and card expansion to reveal fare types and
+            flight details.</p>
+            <p>Then I critiqued my own pass. Expansion to see fares was good practice and stayed. But giving
+            <em>each cabin class</em> its own top-level card was neither necessary nor clear &mdash; it meant one
+            flight appearing repeatedly down the list, which is exactly the kind of thing that makes a customer
+            doubt they&rsquo;re reading the list correctly.</p>
           </div>
 
           <div class="figure-row">
             <figure class="figure figure--wash">
-              <img src="../images/work/mobile-flight-purchase-path/04-wireframe-adaptation.webp" width="760" height="452" alt="Adapted wireframes retaining depart and return tabs, a filter and sort strip, and per-cabin-class cards." loading="lazy" decoding="async">
-              <figcaption><strong>Pass one.</strong> Agency structure reconciled with what the API returns.</figcaption>
+              <img src="../images/work/mobile-flight-purchase-path/04-wireframe-adaptation.webp" width="760" height="452" alt="Adapted wireframes with depart and return tabs, a filter and sort strip, a separate top-level card for each cabin class, and an expanded card revealing fare options." loading="lazy" decoding="async">
+              <figcaption><strong>Pass one.</strong> Agency structure reconciled with what the API returns &mdash;
+              but a separate top-level card for every cabin class.</figcaption>
             </figure>
             <figure class="figure figure--wash">
-              <img src="../images/work/mobile-flight-purchase-path/05-wireframe-polish.webp" width="760" height="337" alt="Polished wireframes with cabin classes moved into the expanded card and paired fares grouped separately." loading="lazy" decoding="async">
-              <figcaption><strong>Pass two.</strong> All cabin classes moved <em>inside</em> the expanded card; paired
-              fares grouped into their own top-level cards; non-standard airports called out by code. Flow approved.</figcaption>
+              <img src="../images/work/mobile-flight-purchase-path/05-wireframe-polish.webp" width="760" height="337" alt="Polished wireframes with one card per flight, all cabin classes moved inside the expanded card, non-standard airports called out by airport code, and a paired flight strip below a card." loading="lazy" decoding="async">
+              <figcaption><strong>Pass two.</strong> One flight, one card. All cabin classes moved
+              <em>inside</em> the expanded card.</figcaption>
             </figure>
           </div>
 
           <div class="cs-body mt-6">
-            <p>That second pass fixed the four-cards-per-flight problem: one flight, one card, cabin classes revealed on
-            expansion. It also introduced grouping paired fares separately at the top level &mdash; a new approach that
-            came directly out of the
-            <a href="paired-flight-modal.html">desktop paired-flight research</a> running in parallel.</p>
-            <p>From there, high-fidelity mocks and clickable prototypes. Marketing and Product requirements went in at
-            this stage &mdash; a featured airline slot, fare rules &mdash; and the out-of-scope &lsquo;compare
-            fares&rsquo; button came out for MVP.</p>
+            <p>Pass two simplified the top-level cards and moved every cabin class into the expanded card. It also
+            called out non-standard airports by airport code, and introduced a new approach: grouping paired fares
+            into their own cards at the top level.</p>
+            <p>General flow approved. Now it was worth building a prototype.</p>
+          </div>
+        </section>
+
+        <!-- 04 -->
+        <section class="cs-chapter" id="prototype">
+          <div class="cs-chapter__head">
+            <span class="cs-chapter__num">04</span>
+            <h2>From wireframe to clickable prototype</h2>
+          </div>
+          <div class="cs-body">
+            <p>High-fidelity mocks next, then clickable prototypes in InVision for remote usability testing. Two
+            things went in at this stage that hadn&rsquo;t been in the wireframes:</p>
+            <ul>
+              <li><strong>Non-primary airports highlighted orange.</strong> Avalon is not Tullamarine, and a
+              customer who discovers that at the airport is a customer you have lost.</li>
+              <li><strong>Marketing and Product requirements</strong> &mdash; a featured airline slot and fare
+              rules. The out-of-scope &lsquo;compare fares&rsquo; button came out for MVP.</li>
+            </ul>
           </div>
 
           <div class="phones">
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/06-ui-mock-prototype.webp" width="320" height="568" alt="High-fidelity mobile flight results mock with a featured card, filter and sort controls, and an onboarding tip." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/06-ui-mock-prototype.webp" width="320" height="568" alt="High-fidelity mobile flight results mock in a browser frame, with a FEATURED card, a blue Filter button, a Sort dropdown and a dismissible tip about narrowing results." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Hi-fi mock.</strong> Non-primary airports highlighted orange.</figcaption>
+              <figcaption><strong>Hi-fi mock.</strong> Non-primary airport codes in orange.</figcaption>
             </figure>
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/07-filter-sort-grouped.webp" width="320" height="685" alt="Mobile results screen with Filter and Sort combined into one control and an Edit Search control beside it." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/23-hifi-mock-expanded.webp" width="320" height="702" alt="Expanded flight card in the hi-fi mock showing airport details, five selectable fares from Getaway to Business, a View fare rules link and a green Select button." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Filter &amp; Sort combined.</strong> Testing showed people used the two words
-              interchangeably, so I stopped making them choose.</figcaption>
+              <figcaption>Fares chosen in place, without leaving the results.</figcaption>
+            </figure>
+          </div>
+
+          <div class="cs-body mt-6">
+            <p>Then a round of Webjet-side changes before testing:</p>
+            <ul>
+              <li><strong>Filter and Sort combined into one control.</strong> Customers used the two words
+              interchangeably, so I stopped making them choose between them.</li>
+              <li><strong>A change-of-mind pathway surfaced in the UI</strong> &mdash; &lsquo;Edit Search&rsquo;
+              given a permanent home rather than being a back-button exercise.</li>
+              <li><strong>&lsquo;Selected Orange&rsquo; from the pattern library</strong> for the expanded card
+              state, along with buttons and notifications.</li>
+              <li><strong>Visual hierarchy tidied</strong> so the card&rsquo;s text elements sat in the correct
+              order of importance, and &lsquo;via&rsquo; city names plus stop times added.</li>
+              <li><strong>Seven card types identified and designed</strong>: featured, sale, non-stop, with stops,
+              non-standard airport, next-day arrival, and operated by another carrier.</li>
+              <li><strong>A larger call to action.</strong></li>
+            </ul>
+          </div>
+
+          <div class="phones">
+            <figure class="phone">
+              <div class="phone__screen">
+                <img src="../images/work/mobile-flight-purchase-path/07-filter-sort-grouped.webp" width="320" height="685" alt="Mobile results screen with Filter and Sort combined into a single blue control, an Edit Search control beside it, a FEATURED card, and a paired flight strip below one of the flights." loading="lazy" decoding="async">
+              </div>
+              <figcaption><strong>Filter &amp; Sort combined</strong>, with Edit Search alongside it.</figcaption>
             </figure>
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/08-paired-flight-expanded.webp" width="320" height="574" alt="Expanded paired flight card showing the pairing explanation and fare options." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/24-selected-orange-expanded.webp" width="320" height="612" alt="Expanded Jetstar flight card outlined in the pattern library's Selected Orange, showing partner airline footnote, airport details, five fares and a green Select button with the selected fare price." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Paired flight card.</strong> Terminology inherited from the desktop studies for
-              consistency.</figcaption>
+              <figcaption><strong>&lsquo;Selected Orange&rsquo;</strong> for the expanded card, straight from the
+              pattern library.</figcaption>
             </figure>
           </div>
 
@@ -244,68 +325,117 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
               Design system, doing its job
             </p>
-            <p>Buttons, notifications and the &lsquo;Selected Orange&rsquo; state for an expanded card all came straight
-            from the <a href="ui-pattern-library.html">UI Pattern Library</a> I&rsquo;d founded the year before.
-            That meant zero specification debate on those elements, and the front-end team could build the results page
-            from existing snippets. A design system pays for itself in the projects it makes boring.</p>
+            <p>Buttons, notifications and the selected-card colour all came from the
+            <a href="ui-pattern-library.html">UI Pattern Library</a> I&rsquo;d founded the year before. That is six
+            rounds of studies in which nobody had to argue about a button, and six rounds in which the front-end
+            team could read the prototype as components they already had. A design system pays for itself in the
+            projects it makes boring.</p>
           </div>
         </section>
 
-        <!-- 04 -->
-        <section class="cs-chapter" id="density">
+        <!-- 05 -->
+        <section class="cs-chapter" id="paired">
           <div class="cs-chapter__head">
-            <span class="cs-chapter__num">04</span>
-            <h2>Density, hierarchy, and seven kinds of card</h2>
+            <span class="cs-chapter__num">05</span>
+            <h2>The paired flight flow, borrowed rather than reinvented</h2>
           </div>
           <div class="cs-body">
-            <p>Travel products are information-dense, and a phone gives you one column. Almost all the craft here went
-            into deciding what earns its pixels.</p>
-            <ul>
-              <li><strong>Visual hierarchy, deliberately ordered</strong> &mdash; departure and arrival times outrank
-              duration; duration and stop count outrank stop location and layover length. Size, weight, position and
-              contrast set to match that order rather than to look balanced.</li>
-              <li><strong>Repetition removed</strong> &mdash; departure and arrival airports hidden unless the airport
-              was non-primary, since the customer already told us the route.</li>
-              <li><strong>Real-world edge cases surfaced</strong> &mdash; &lsquo;via&rsquo; city names, layover times,
-              and explicit next-day-arrival flags, because arriving on a different date than you assumed is the kind of
-              surprise that generates a refund request.</li>
-              <li><strong>Card height cut</strong> so more flights fit above the fold.</li>
-              <li><strong>Seven card types identified and designed</strong>: featured, sale, non-stop, with stops,
-              non-standard airport, next-day arrival, and operated by another carrier &mdash; plus the combinations.</li>
-            </ul>
-            <p>The UI dev team fed back on the near-final design and I took most of it: full-height price box, duration
-            and stops onto a single line, airport codes dropped to save width, more vertical padding. All of it made the
-            component easier to build <em>and</em> easier to scan, which is usually how that conversation goes if you
-            have it early enough.</p>
+            <p>Some fares only allow a return on a specific set of flights with the same airline. On desktop this
+            had been a purchase-path dead-end until we
+            <a href="paired-flight-modal.html">fixed it</a>, and the studies that fixed it had already established
+            what customers could understand.</p>
+            <p>So I designed the mobile paired flight flow on those learnings rather than starting fresh, and
+            adopted the <strong>&lsquo;paired flight&rsquo;</strong> nomenclature from the earlier studies for
+            consistency. Every key variant flow was explicitly designed rather than left for build to interpret:
+            results collapsed and expanded, and the returning-leg results collapsed and expanded.</p>
           </div>
 
           <div class="phones">
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/09-density-reduction.webp" width="320" height="685" alt="Refined results card with reduced repetition, next-day arrival flag and shorter card height." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/08-paired-flight-expanded.webp" width="320" height="574" alt="Expanded paired flight card on the departing results, with a P badge reading Paired flight: 2 return flight options, airport details and four selectable fares." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Density pass.</strong> Shorter cards, less repetition, next-day arrivals called out.</figcaption>
+              <figcaption><strong>Departing, expanded.</strong> The pairing declared on the card, with the number of
+              return options available.</figcaption>
             </figure>
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/17-recovery-different-departing.webp" width="320" height="568" alt="Returning flight screen with a Don't like your choices? Select a different departing flight recovery link." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/17-recovery-different-departing.webp" width="320" height="568" alt="Returning flight results showing only two permitted paired options, a notice that you must return with the same airline, and a link reading Select a different departing flight." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>The recovery path.</strong> Designed in from the start on this project, because
-              desktop had taught us what happens without one.</figcaption>
+              <figcaption><strong>Returning, collapsed.</strong> Only the permitted flights &mdash; plus a way
+              out.</figcaption>
+            </figure>
+            <figure class="phone">
+              <div class="phone__screen">
+                <img src="../images/work/mobile-flight-purchase-path/25-paired-returning-expanded.webp" width="320" height="646" alt="Expanded returning paired flight card with fare options, the selected fare price, a green Select button, and a recovery link to select a different departing flight." loading="lazy" decoding="async">
+              </div>
+              <figcaption><strong>Returning, expanded.</strong> The recovery path stays on screen.</figcaption>
+            </figure>
+          </div>
+
+          <div class="callout callout--decision">
+            <p class="callout__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Decision: test the case where the customer is disappointed
+            </p>
+            <p>Round one ran three scenarios: a one-way booking, a paired flight the customer <em>wanted</em>, and a
+            paired flight the customer <strong>did not want</strong>. Rounds two to six ran the last two. Designing
+            the happy path is the easy half; the revenue leaks out of the moment a customer is told they can&rsquo;t
+            have what they picked. If the recovery path isn&rsquo;t tested, it isn&rsquo;t designed.</p>
+          </div>
+        </section>
+
+        <!-- 06 -->
+        <section class="cs-chapter" id="density">
+          <div class="cs-chapter__head">
+            <span class="cs-chapter__num">06</span>
+            <h2>What earns its pixels</h2>
+          </div>
+          <div class="cs-body">
+            <p>Travel products are information-dense and a phone gives you one column, so the last pass before
+            testing was about what each element was actually worth.</p>
+            <ul>
+              <li><strong>Repetition reduced.</strong> Departure and arrival airports hidden unless the airport was
+              non-primary &mdash; the customer told us the route, so restating it on every card is noise. The
+              exception is exactly the case where it matters.</li>
+              <li><strong>Next-day arrivals called out</strong> explicitly, in orange. Arriving on a different date
+              than you assumed is a refund request waiting to happen.</li>
+              <li><strong>Card height reduced</strong>, so more product sits above the fold.</li>
+            </ul>
+            <p>I also showed the near-final card to the UI dev team and took their feedback: a full-height price
+            box, duration and stops onto a single line, airport codes dropped to save space, and more padding top
+            and bottom. Every one of those made the card easier to scan as well as easier to build &mdash; which is
+            what you would hope for from feedback given by the people who have to build it.</p>
+          </div>
+
+          <div class="phones">
+            <figure class="phone">
+              <div class="phone__screen">
+                <img src="../images/work/mobile-flight-purchase-path/07-filter-sort-grouped.webp" width="320" height="685" alt="Results cards before the density pass: airports repeated on every card, two lines per flight, and taller cards." loading="lazy" decoding="async">
+              </div>
+              <figcaption><strong>Before.</strong> The prototype as it stood &mdash; airports restated on every
+              card.</figcaption>
+            </figure>
+            <figure class="phone">
+              <div class="phone__screen">
+                <img src="../images/work/mobile-flight-purchase-path/09-density-reduction.webp" width="320" height="685" alt="Results cards after the density pass: shorter cards, duration and stops on one line, Departs Avalon flagged in orange, and a next-day arrival shown as two dates in orange." loading="lazy" decoding="async">
+              </div>
+              <figcaption><strong>After.</strong> Shorter cards, less repetition, &lsquo;Departs Avalon&rsquo; and
+              next-day arrivals called out.</figcaption>
             </figure>
           </div>
         </section>
 
-        <!-- 05 -->
+        <!-- 07 -->
         <section class="cs-chapter" id="rounds">
           <div class="cs-chapter__head">
-            <span class="cs-chapter__num">05</span>
-            <h2>Six rounds of remote usability testing</h2>
+            <span class="cs-chapter__num">07</span>
+            <h2>Six rounds, decided by customers</h2>
           </div>
           <div class="cs-body">
-            <p>Three scenarios in round one &mdash; one-way, wanted paired flight, unwanted paired flight &mdash; then
-            two per round after that. Two problems refused to die for three straight rounds, and one of my fixes made
-            things measurably worse.</p>
+            <p>Each round: remote usability studies through UserTesting.com, observations written up, changes made,
+            retest. Two problems refused to die for three straight rounds &mdash; and the fix I chose for a third
+            problem failed twice.</p>
           </div>
 
           <div class="rounds">
@@ -314,28 +444,34 @@
               <div>
                 <div class="round__head">
                   <span class="round__n">1</span>
-                  <h3 class="round__title">Eight findings, one of them structural</h3>
+                  <h3 class="round__title">The observations, and the assumption I logged</h3>
                 </div>
                 <h4>What happened</h4>
                 <ul>
-                  <li class="miss">The header wasn&rsquo;t sticky, so the Filter button scrolled out of sight exactly when people wanted it</li>
-                  <li class="miss">Most participants wanted to filter and sort &mdash; but many reached for <strong>Edit Search</strong> first, not the blue Filter &amp; Sort button</li>
-                  <li class="miss">Wayfinding was weak: the departing-to-returning transition was an abrupt fade, and tabs alone didn&rsquo;t tell people which leg they were choosing</li>
-                  <li class="miss">A couple of participants wouldn&rsquo;t even expand a Paired Flight card &mdash; they read it as offering <em>less</em> choice</li>
-                  <li class="miss">&lsquo;Select&nbsp;&rsaquo;&rsquo; didn&rsquo;t read as the route to paired returning flights</li>
-                  <li class="miss">FEATURED broke people&rsquo;s model of the sort order &mdash; if the list is sorted by price, why is this one first?</li>
+                  <li class="miss">The header wasn&rsquo;t sticky &mdash; the filter button scrolled out of sight exactly when people wanted it</li>
+                  <li class="miss">Most participants wanted to filter and sort, but not all of them clicked the blue &lsquo;Filter &amp; Sort&rsquo; button. People clicked <strong>Edit Search</strong> first</li>
+                  <li class="miss">Wayfinding needed work: the departing-to-returning transition was abrupt, the next step was unclear initially, and it wasn&rsquo;t clear <em>which direction</em> of flight you were selecting</li>
+                  <li class="miss">&lsquo;Select&nbsp;&rsaquo;&rsquo; didn&rsquo;t read as the path forward to see paired returning flights</li>
+                  <li class="miss">Paired flights should be visible as soon as the first paired card is expanded &mdash; or instructions added to say how to reach them</li>
+                  <li class="miss">FEATURED was throwing people off as to what the sort order was</li>
+                  <li>A couple of participants avoided even expanding paired flight options, reading them as <em>less</em> choice</li>
+                  <li>One participant suggested reversing the header on the returning leg to &lsquo;Auckland to Melbourne&rsquo;</li>
                 </ul>
                 <h4>What I changed</h4>
                 <ul>
-                  <li class="did">Made the header and filter sticky</li>
-                  <li class="did">Pulled the returning flight details into the same card, so people didn&rsquo;t have to leave results &mdash; mirroring desktop matrix</li>
-                  <li class="did">Started experimenting on FEATURED: dividing line, then a red tint, then a rename</li>
+                  <li class="did">Made the header, including the filter button, sticky</li>
+                  <li class="did">Pulled the returning flight details out of the next screen and into the same card, so people didn&rsquo;t have to leave the results &mdash; a call we made as a team, mirroring the desktop matrix</li>
+                  <li class="did">Began experimenting on FEATURED, again as a team: a dividing line, then a red background tint, then &mdash; eventually &mdash; a rename</li>
+                </ul>
+                <h4>The assumption I logged</h4>
+                <ul>
+                  <li>The transition between departing and returning was a quick fade, and the tabs alone weren&rsquo;t telling people what to do next. <em>I assumed making the header sticky would go some way to resolving this.</em> Writing that down is what made round two informative rather than merely disappointing.</li>
                 </ul>
               </div>
               <div class="round__media">
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/10-round-1.webp" width="760" height="1329" alt="Round one prototype: non-sticky header, blue Filter and Sort button, depart and return tabs." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/10-round-1.webp" width="760" height="1329" alt="Round one prototype: non-sticky header, blue Filter and Sort button, depart and return tabs, the sort order line above a FEATURED Jetstar card." loading="lazy" decoding="async">
                   </div>
                   <figcaption>Round 1 prototype</figcaption>
                 </figure>
@@ -346,27 +482,36 @@
               <div>
                 <div class="round__head">
                   <span class="round__n">2</span>
-                  <h3 class="round__title">The reversal</h3>
+                  <h3 class="round__title">The assumption fails, and so does my fix</h3>
                 </div>
                 <h4>What I changed</h4>
                 <ul>
-                  <li class="did">Sticky header; tinted FEATURED background; single-card paired flight; explicit &lsquo;Departing Flight&rsquo; / &lsquo;Returning Flight&rsquo; headings on expanded cards</li>
-                  <li class="did">Removed the count of paired returning flights, on a hunch that hiding a small number would encourage engagement</li>
+                  <li class="did">Sticky header</li>
+                  <li class="did">Background tint on the featured card, with the sort-order line moved below it to divide it from the list</li>
+                  <li class="did">Single-card paired flight &mdash; departing and returning legs combined into one expanded card</li>
+                  <li class="did">&lsquo;Departing Flight&rsquo; / &lsquo;Returning Flight&rsquo; headings on expanded cards</li>
+                  <li class="did">Removed the count of paired returning flights, to see whether hiding a small number encouraged engagement</li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
-                  <li class="miss">FEATURED confusion: unchanged</li>
-                  <li class="miss">Which-leg-am-I-on confusion: unchanged, <em>despite</em> the sticky header</li>
-                  <li class="miss">The single-card paired flight flow was <strong>worse</strong>. Information overload, no clarity on what to do if the return flight wasn&rsquo;t wanted, and participants trying to <em>un-tick</em> items to escape</li>
-                  <li class="miss">Hiding the count changed engagement not at all &mdash; so it went straight back in</li>
+                  <li class="miss">FEATURED and sort-order confusion: <strong>unchanged</strong></li>
+                  <li class="miss">Which-leg-am-I-on confusion: <strong>unchanged</strong>, despite the sticky header. My assumption from round one was wrong</li>
+                  <li class="miss">The single-card paired flight flow was <strong>very poor</strong>. Confusion all around, information overload, no clarity on what to do if the return flight wasn&rsquo;t wanted &mdash; participants were trying to <em>un-tick</em> items to escape</li>
+                  <li class="miss">Hiding the count changed the rate of engagement not at all, so the number of return options went back in</li>
                 </ul>
               </div>
               <div class="round__media">
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/11-round-2.webp" width="760" height="1318" alt="Round two prototype with sticky header, tinted featured card and a single-card paired flight treatment." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/20-round-2-collapsed.webp" width="732" height="1270" alt="Round two results list with a sticky header, depart and return tabs, and the FEATURED Jetstar card on a tinted background above the sort order line." loading="lazy" decoding="async">
                   </div>
-                  <figcaption>Round 2 prototype</figcaption>
+                  <figcaption>Round 2 &mdash; results</figcaption>
+                </figure>
+                <figure class="phone">
+                  <div class="phone__screen">
+                    <img src="../images/work/mobile-flight-purchase-path/11-round-2.webp" width="760" height="1318" alt="Round two expanded card combining a Departing Flight section and a Returning Flight section, each with its own fare list, into a single paired flight card." loading="lazy" decoding="async">
+                  </div>
+                  <figcaption>Round 2 &mdash; single-card paired flight</figcaption>
                 </figure>
               </div>
             </article>
@@ -375,32 +520,38 @@
               <div>
                 <div class="round__head">
                   <span class="round__n">3</span>
-                  <h3 class="round__title">Explaining harder, again</h3>
+                  <h3 class="round__title">Explaining harder didn&rsquo;t work either</h3>
                 </div>
                 <h4>What I changed</h4>
                 <ul>
                   <li class="did">Removed the depart/return tabs entirely</li>
-                  <li class="did">Added an imperative at the top of results telling people what to do</li>
+                  <li class="did">Added an imperative at the top of the results telling people what to do</li>
                   <li class="did">Added explanation and instructions to the expanded paired flight card</li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
-                  <li class="miss">FEATURED: still confusing</li>
-                  <li class="miss">Which leg am I on: still confusing, imperative or not &mdash; because it scrolled away</li>
+                  <li class="miss">FEATURED and sort order: still confusing</li>
+                  <li class="miss">Which leg am I on: still confusing, imperative or not</li>
                   <li class="win">Paired flight flow improved&hellip;</li>
-                  <li class="miss">&hellip;but still poorly understood. Not an acceptable place to stop</li>
+                  <li class="miss">&hellip;but still very poorly understood. <strong>Not an acceptable solution</strong></li>
                 </ul>
                 <h4>The call</h4>
                 <ul>
-                  <li class="did">Abandon the single-card experiment and <strong>revert to the original paired flight flow</strong>, then fix it with header changes, screen transitions and clearer next-step labelling</li>
+                  <li class="did">Revisit the <em>original</em> paired flight flow rather than keep patching the combined card, and address the rest with header changes, screen transitions, and clarifying the next step on the paired flight card</li>
                 </ul>
               </div>
               <div class="round__media">
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/12-round-3.webp" width="760" height="1335" alt="Round three prototype: tabs removed, imperative above results, expanded paired flight card with instructions." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/21-round-3-collapsed.webp" width="760" height="1334" alt="Round three results list with the depart and return tabs removed and a red Select Departing Flight imperative added above the results." loading="lazy" decoding="async">
                   </div>
-                  <figcaption>Round 3 prototype</figcaption>
+                  <figcaption>Round 3 &mdash; tabs gone, imperative added</figcaption>
+                </figure>
+                <figure class="phone">
+                  <div class="phone__screen">
+                    <img src="../images/work/mobile-flight-purchase-path/12-round-3.webp" width="760" height="1335" alt="Round three expanded paired flight card with added explanation, a notice that you must return with the same airline, and a link to select a different departing flight." loading="lazy" decoding="async">
+                  </div>
+                  <figcaption>Round 3 &mdash; more explanation on the combined card</figcaption>
                 </figure>
               </div>
             </article>
@@ -409,35 +560,36 @@
               <div>
                 <div class="round__head">
                   <span class="round__n">4</span>
-                  <h3 class="round__title">Both long-standing problems solved</h3>
+                  <h3 class="round__title">Reverting, renaming, and both problems gone</h3>
                 </div>
                 <h4>What I changed</h4>
                 <ul>
-                  <li class="did">Rebuilt the header: sortable column titles, the imperative, and the date &mdash; permanently visible</li>
+                  <li class="did">Rebuilt the header: sortable column titles, the imperative, and the date</li>
                   <li class="did">FEATURED renamed <strong>PROMOTION</strong></li>
-                  <li class="did">Paired flight reverted to the original flow; &lsquo;Select&rsquo; became <strong>&lsquo;Continue&rsquo;</strong></li>
-                  <li class="did">Swapped the positions of Filter and Edit Search to match where people actually reached</li>
-                  <li class="did">Added loading screens between the departing and returning steps &mdash; even though the content was already loaded</li>
+                  <li class="did">Paired flight <strong>reverted</strong> to the original flow; &lsquo;Select&rsquo; relabelled <strong>&lsquo;Continue&rsquo;</strong></li>
+                  <li class="did">Switched the positions of Filter and Edit Search</li>
+                  <li class="did">Loading screens added between the departing and returning steps &mdash; even though the content was already loaded, because participants expected a transition</li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
-                  <li class="win">FEATURED / sort-order confusion: <strong>eliminated</strong>. One honest word did what three rounds of tinting and dividing lines couldn&rsquo;t</li>
-                  <li class="win">Which-leg confusion: <strong>eliminated</strong>. A single always-visible imperative in the header focused people on the current task instead of asking them to hold a two-step model</li>
-                  <li class="win">Paired flight experience greatly improved</li>
+                  <li class="win">FEATURED and sort-order confusion: <strong>eliminated</strong></li>
+                  <li class="win">Which-leg confusion: <strong>eliminated</strong>, by keeping a single imperative visible at all times in the header &mdash; focusing people on the task in front of them instead of asking them to hold a two-step model</li>
+                  <li class="win">Paired flight experience <strong>greatly improved</strong></li>
                 </ul>
               </div>
               <div class="round__media">
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/13-round-4.webp" width="760" height="1340" alt="Round four prototype with sortable column headers, a persistent imperative and a PROMOTION label." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/13-round-4.webp" width="760" height="1340" alt="Round four prototype with sortable column headers, a persistent Departing Flight imperative with the date, and a PROMOTION label replacing FEATURED." loading="lazy" decoding="async">
                   </div>
-                  <figcaption>Round 4 &mdash; departing</figcaption>
+                  <figcaption>Round 4 &mdash; sortable headers, persistent imperative, PROMOTION</figcaption>
                 </figure>
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/19-round-4-returning.webp" width="760" height="1321" alt="Round four returning flight screen showing the reverted paired flight flow with a Continue button." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/19-round-4-returning.webp" width="760" height="1321" alt="Round four expanded paired flight card on the departing results, showing the paired flight notice, fare details and a green Continue button." loading="lazy" decoding="async">
                   </div>
-                  <figcaption>Round 4 &mdash; returning</figcaption>
+                  <figcaption>Round 4 &mdash; paired flight back on the original flow, &lsquo;Continue&rsquo;
+                  replacing &lsquo;Select&rsquo;</figcaption>
                 </figure>
               </div>
             </article>
@@ -446,25 +598,31 @@
               <div>
                 <div class="round__head">
                   <span class="round__n">5</span>
-                  <h3 class="round__title">Carrying context forward</h3>
+                  <h3 class="round__title">Carrying the decision forward</h3>
                 </div>
                 <h4>What I changed</h4>
                 <ul>
-                  <li class="did">Edit Search and Filters moved to a floating footer that shows and hides itself as cards expand</li>
+                  <li class="did">Edit Search and Filters moved to a floating footer that shows and hides itself automatically as cards expand</li>
                   <li class="did">The selected departing flight now displayed on the returning results screen</li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
-                  <li class="win">Confusion about which flight had been chosen in the previous step: eliminated</li>
-                  <li class="win">Paired flight clarity improved again</li>
+                  <li class="win">Confusion about which flight had been selected in the previous step: <strong>eliminated</strong></li>
+                  <li class="win">Paired flight clarity improved</li>
                 </ul>
               </div>
               <div class="round__media">
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/14-round-5.webp" width="712" height="1252" alt="Round five returning flight screen with the selected departing flight shown at the top and controls in a floating footer." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/15-round-6-final.webp" width="760" height="1347" alt="Round five departing results with sortable column headers, the pinned imperative and date, and Edit Search and Filter moved into a floating footer at the bottom of the screen." loading="lazy" decoding="async">
                   </div>
-                  <figcaption>Round 5 &mdash; selected flight carried forward</figcaption>
+                  <figcaption>Round 5 &mdash; controls in a floating footer</figcaption>
+                </figure>
+                <figure class="phone">
+                  <div class="phone__screen">
+                    <img src="../images/work/mobile-flight-purchase-path/14-round-5.webp" width="712" height="1252" alt="Round five returning flight screen with the selected departing flight shown in a strip at the top, a reversed header, and the returning imperative and date below it." loading="lazy" decoding="async">
+                  </div>
+                  <figcaption>Round 5 &mdash; the chosen departing flight carried forward</figcaption>
                 </figure>
               </div>
             </article>
@@ -477,52 +635,75 @@
                 </div>
                 <h4>What I changed</h4>
                 <ul>
-                  <li class="did">Paired-flight icon added to the selected flight strip</li>
-                  <li class="did">&lsquo;Don&rsquo;t like your choices?&rsquo; became <strong>&lsquo;Want more flight options?&rsquo;</strong> with a clear back arrow and call to action</li>
+                  <li class="did">Paired flight icon added to the selected flight strip</li>
+                  <li class="did">&lsquo;Don&rsquo;t like your choices?&rsquo; became <strong>&lsquo;Want more flight options?&rsquo;</strong>, with a clear back arrow and call to action</li>
                   <li class="did">&lsquo;Paired flight:&rsquo; prefix added to the explanation text</li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
-                  <li class="win">Paired flight clarity improved further. The negative framing had been quietly implying the customer had made a mistake; the positive framing reads as an offer</li>
+                  <li class="win">Paired flight clarity improved again</li>
                 </ul>
               </div>
               <div class="round__media">
                 <figure class="phone">
                   <div class="phone__screen">
-                    <img src="../images/work/mobile-flight-purchase-path/16-round-6-returning.webp" width="324" height="573" alt="Round six returning flight screen with paired flight prefix and a Want more flight options call to action." loading="lazy" decoding="async">
+                    <img src="../images/work/mobile-flight-purchase-path/15-round-6-final.webp" width="760" height="1347" alt="Round six departing results, unchanged from round five: sortable column headers, pinned imperative and date, and a floating footer with filter controls." loading="lazy" decoding="async">
                   </div>
-                  <figcaption>Round 6 &mdash; returning</figcaption>
+                  <figcaption>Round 6 &mdash; departing, unchanged from round 5</figcaption>
+                </figure>
+                <figure class="phone">
+                  <div class="phone__screen">
+                    <img src="../images/work/mobile-flight-purchase-path/16-round-6-returning.webp" width="324" height="573" alt="Round six returning flight screen with a paired flight icon on the selected flight strip, a Paired flight prefix on the explanation, and a Want more flight options call to action." loading="lazy" decoding="async">
+                  </div>
+                  <figcaption>Round 6 &mdash; returning, with the positive recovery framing</figcaption>
                 </figure>
               </div>
             </article>
 
           </div>
+
+          <div class="callout callout--insight">
+            <p class="callout__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+              The observation I deliberately did not act on
+            </p>
+            <p>In round one, a couple of participants avoided expanding paired flight options because they read them
+            as offering <em>less</em> choice. That is an interesting signal and it would have been easy to redesign
+            around it. But it was a couple of people. <strong>Not enough participants to warrant a change</strong>,
+            so I logged it for future testing and left it alone. Being led by evidence has to include not
+            over-reading it &mdash; otherwise every round spends its budget chasing the last participant who said
+            something memorable.</p>
+          </div>
         </section>
 
-        <!-- 06 -->
+        <!-- 08 -->
         <section class="cs-chapter" id="final">
           <div class="cs-chapter__head">
-            <span class="cs-chapter__num">06</span>
-            <h2>The design that shipped</h2>
+            <span class="cs-chapter__num">08</span>
+            <h2>The design that went to build</h2>
           </div>
           <div class="cs-body">
-            <p>Sortable column headers with the imperative and date pinned above them. PROMOTION instead of FEATURED.
-            Paired flights on the original flow with clearer labelling. Filters and Edit Search in a floating footer
-            that gets out of the way. The selected departing flight carried forward so nobody has to remember it.</p>
+            <p>Sortable column headers with a single imperative and the date pinned above them. PROMOTION instead of
+            FEATURED. Paired flights on the original two-step flow with clearer labelling and a positively framed
+            way out. Filters and Edit Search in a floating footer that gets out of the way. The selected departing
+            flight carried forward so nobody has to hold it in their head.</p>
+            <p>Seven card types and every key paired-flight variant flow specified, with pattern-library components
+            already in place for the front-end team. It went to build and shipped.</p>
           </div>
 
           <div class="phones">
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/15-round-6-final.webp" width="760" height="1347" alt="Final mobile flight results: pinned imperative and date, sortable column headers, PROMOTION card, and a floating footer with filter controls." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/15-round-6-final.webp" width="760" height="1347" alt="Final mobile flight results: pinned imperative and date, sortable column headers, a PROMOTION card, and a floating footer with filter controls." loading="lazy" decoding="async">
               </div>
               <figcaption><strong>Departing.</strong> Sortable headers, one imperative, floating controls.</figcaption>
             </figure>
             <figure class="phone">
               <div class="phone__screen">
-                <img src="../images/work/mobile-flight-purchase-path/16-round-6-returning.webp" width="324" height="573" alt="Final returning flight screen with the selected departing flight strip, paired flight explanation and recovery call to action." loading="lazy" decoding="async">
+                <img src="../images/work/mobile-flight-purchase-path/16-round-6-returning.webp" width="324" height="573" alt="Final returning flight screen with the selected departing flight strip, the paired flight explanation, and a Want more flight options recovery call to action." loading="lazy" decoding="async">
               </div>
-              <figcaption><strong>Returning.</strong> Prior selection carried forward; recovery path stated positively.</figcaption>
+              <figcaption><strong>Returning.</strong> Prior selection carried forward; recovery stated as an
+              offer.</figcaption>
             </figure>
           </div>
 
@@ -531,17 +712,19 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg>
               Outcome
             </p>
-            <p>Both confusion points that had survived three rounds of iteration were eliminated, and the paired-flight
-            experience went from &ldquo;participants trying to un-tick things to escape&rdquo; to a flow people completed
-            unaided. Seven card types and every paired-flight variant flow were specified and handed to build with
-            pattern-library components already in place.</p>
+            <p>Both confusion points that had survived three rounds of iteration were <strong>eliminated</strong>,
+            and the paired flight experience went from confusion all around &mdash; participants trying to un-tick
+            items &mdash; to clarity improving in each of the last three rounds. The design reached the development
+            team already carrying its evidence, which is the point. Every one of the six rounds cost a fraction of
+            what it costs to discover the same problem in production, on the screen where customers are deciding
+            whether to buy.</p>
           </div>
         </section>
 
-        <!-- 07 -->
+        <!-- 09 -->
         <section class="cs-chapter" id="learned">
           <div class="cs-chapter__head">
-            <span class="cs-chapter__num">07</span>
+            <span class="cs-chapter__num">09</span>
             <h2>What I learned</h2>
           </div>
 
@@ -551,24 +734,36 @@
               Five things I took from this
             </p>
             <ul>
-              <li><strong>Sometimes the right move is to undo your own work.</strong> The single-card paired flight was
-              my idea, I&rsquo;d argued for it internally, and it tested worse twice. Reverting in round four is what
-              made rounds four, five and six productive. Having six rounds budgeted is what made reverting survivable.</li>
-              <li><strong>People expect a transition even when there&rsquo;s nothing to wait for.</strong> The content
-              was already loaded, and the instant switch between departing and returning left people unsure whether
-              anything had happened. Adding an artificial loading screen fixed a comprehension problem, which is a
-              genuinely counterintuitive result and one I&rsquo;ve reused since.</li>
-              <li><strong>One honest word beats three rounds of visual treatment.</strong> I tried a dividing line, then
-              a red tint, then a background change on FEATURED. Renaming it PROMOTION solved it immediately &mdash; the
-              problem was never contrast, it was that the label made a claim about ordering it couldn&rsquo;t support.</li>
-              <li><strong>Negative framing implies the customer erred.</strong> &ldquo;Don&rsquo;t like your
-              choices?&rdquo; put people on the back foot. &ldquo;Want more flight options?&rdquo; reads as an offer.
-              Same link, same destination, different relationship.</li>
-              <li><strong>Get engineering into the design before it&rsquo;s finished.</strong> Every piece of dev-team
-              feedback on the near-final card &mdash; full-height price box, single-line duration and stops, more padding
-              &mdash; made the component both cheaper to build and easier to read. That only happens if you show them
-              work you&rsquo;re still willing to change.</li>
+              <li><strong>Write your assumptions down before you test them.</strong> I recorded that I expected a
+              sticky header to go some way to fixing the wayfinding problem. It didn&rsquo;t, and because the
+              expectation was on paper, round two produced a finding instead of a shrug. An untested assumption is a
+              risk you are carrying without pricing it.</li>
+              <li><strong>Be willing to undo your own work.</strong> The single-card paired flight was the fix I
+              took to test, and customers rejected it twice. Reverting in round four is what made rounds four, five
+              and six productive. Having a standing research budget is what made reverting survivable rather than
+              embarrassing.</li>
+              <li><strong>One honest word did more than two rounds of visual treatment.</strong> On FEATURED we
+              tried a dividing line, then a red background tint. Round four renamed it PROMOTION and put sortable
+              column titles in the header, and the confusion was gone. My read is that the label had been making a
+              claim about the ordering of the list that it couldn&rsquo;t support, so no amount of contrast was ever
+              going to fix it.</li>
+              <li><strong>People expect a transition even when there is nothing to wait for.</strong> The content
+              was already loaded, and the quick fade between departing and returning wasn&rsquo;t telling
+              participants what had just happened or what to do next &mdash; they expected a transition. Adding a
+              loading screen with nothing to load is a counterintuitive fix I&rsquo;ve reused since.</li>
+              <li><strong>Framing changes the relationship.</strong> &ldquo;Don&rsquo;t like your choices?&rdquo;
+              became &ldquo;Want more flight options?&rdquo; and paired flight clarity improved again. My read is
+              that the negative version quietly implied the customer had made a mistake, where the positive version
+              reads as an offer &mdash; same link, same destination, different tone of voice.</li>
             </ul>
+          </div>
+
+          <div class="cs-body mt-6">
+            <p>The through-line, and the reason I work this way: on a purchase path, my taste doesn&rsquo;t get the
+            deciding vote. Some of the changes I was most confident about moved nothing, the two problems I believed
+            were solved in round two weren&rsquo;t solved until round four, and the paired flight approach I
+            advocated had to be taken back out. Every one of those was cheap to find in a prototype. Finding the
+            same things later, in a conversion chart, means the money has already left.</p>
           </div>
         </section>
 
@@ -577,6 +772,7 @@
   </div>
   </article>
 
+  <!-- ================= NEXT / PREV ================= -->
   <nav class="cs-nav" aria-label="Case study navigation">
     <div class="cs-nav__inner">
       <a class="cs-nav__link cs-nav__link--prev" href="paired-flight-modal.html">
@@ -598,6 +794,7 @@
     </div>
   </nav>
 
+  <!-- ================= CTA ================= -->
   <section class="cta-band">
     <div class="wrap cta-band__inner">
       <div data-reveal>
