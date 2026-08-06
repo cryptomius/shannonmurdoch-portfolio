@@ -83,8 +83,8 @@
         <dt>Tools</dt>
         <dd>
           <div class="cs-stat__tags">
-            <span class="chip">Sketch</span><span class="chip">Sketch Measure</span><span class="chip">LESS</span>
-            <span class="chip">Hologram</span><span class="chip">GitHub</span><span class="chip">Bower</span><span class="chip">Azure</span>
+            <span class="chip">Sketch</span><span class="chip">LESS</span>
+            <span class="chip">Hologram</span><span class="chip">GitHub</span><span class="chip">ReactJS</span>
           </div>
         </dd>
       </div>
@@ -141,7 +141,7 @@
             <p>That inconsistency wasn&rsquo;t a cosmetic complaint. It eroded brand trust, reduced the learnability of
             the interface, and cost customers time &mdash; the &ldquo;consistency and standards&rdquo; heuristic is on
             every usability list for good reason.</p>
-            <p>Then my first UX project got approved, and the development team asked me for full design specifications.
+            <p>When my first UX project got approved I had to provide granular design specifications for the largely backend-focused developers.
             Button colours. Hover states. Text colours. Paragraph margins. Every value, every time, because there were
             no standards for anyone to refer to.</p>
           </div>
@@ -158,9 +158,8 @@
             </p>
             <p>There was a resourcing issue nobody had named. Front-end work was regularly being implemented by
             experienced <em>back-end</em> developers with surface-level front-end knowledge. Give two of them the same
-            specification and you got two visibly different results &mdash; which meant almost nothing was reusable, and
-            the codebase got harder to maintain with every release. No amount of better specification writing was going
-            to fix that.</p>
+            mockup or specification and you got two visibly different results &mdash; which meant almost nothing was reusable, and
+            the codebase got harder to maintain with every release. </p>
           </div>
         </section>
 
@@ -172,8 +171,7 @@
           </div>
           <div class="cs-body">
             <p>I needed the scale of the problem in a form every stakeholder could grasp in one look &mdash; marketing,
-            engineering leads, product owners. So I built a UI inventory, which is a deliberately unsophisticated
-            technique:</p>
+            engineering leads, product owners. I also wanted to familiarise myself with the scope of the problem, so I built a quick UI inventory. The process is simple:</p>
             <ol>
               <li>Open a blank slide deck.</li>
               <li>Browse the sites as a customer would. Screenshot every new or different UI element you meet.</li>
@@ -181,6 +179,7 @@
             </ol>
             <p>That&rsquo;s it. The output does the arguing for you. Nobody defends thirty-one button styles once
             they&rsquo;re on one slide together.</p>
+            <p>It also provided a foundation to understand what types of UI elements were being used across the product surface (buttons, titles, horizontal rules, modals, tooltips, etc).</p>
           </div>
 
           <div class="figure-row">
@@ -190,7 +189,7 @@
             </figure>
             <figure class="figure figure--wash">
               <img src="../images/work/ui-pattern-library/04-ui-inventory-buttons.webp" width="1021" height="697" alt="A single inventory slide filled with every distinct button style found across Webjet's properties." loading="lazy" decoding="async">
-              <figcaption>The buttons slide. This was the one that ended the debate.</figcaption>
+              <figcaption>One of three button slides.</figcaption>
             </figure>
           </div>
 
@@ -199,10 +198,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
               Decision: show, don&rsquo;t advocate
             </p>
-            <p>I could have written a business case with efficiency estimates and heuristic citations. It would have
-              been read by two people and questioned by both. An artefact that lets stakeholders reach the conclusion
-              themselves converts far better than an argument that asks them to accept mine &mdash; and it costs a day
-              to make.</p>
+            <p>This simple artefact let stakeholders see and acknowledge the problem, leading to buy-in. It also avoided the need for written business cases on a topic that was visual.</p>
           </div>
         </section>
 
@@ -243,9 +239,10 @@
               <li>If a project slips past the Front-End Team, the back-end developers <strong>liaise</strong> with them
               to create or refine the pattern, pulling in a Visual Designer where needed.</li>
             </ul>
-            <p>And ownership, which is the question that quietly decides whether a design system survives its founder:
+            <p>And ownership, which is the question that quietly decides whether a design system survives:
             visual design sat with the Visual Designer in close collaboration with the Head of Marketing; the repository
             sat with our most front-end-capable developer, who would go on to lead the new team.</p>
+            <p>The codebase at this point was not leveraging modern frameworks like ReactJS so starting with generic HTML/CSS/Javascript allowed the UI patterns to be injested immediately, rather than waiting for legacy systems to be overhauled.</p>
           </div>
 
           <div class="callout callout--decision">
@@ -254,7 +251,7 @@
               Decision: don&rsquo;t keep it
             </p>
             <p>I founded the library and I deliberately did not own it. Handing the repository to a developer who wanted
-            it &mdash; and who would be measured on it &mdash; meant adoption stopped depending on me chasing people.
+            it meant adoption stopped depending on me chasing people.
             Design systems that live in the design team&rsquo;s custody tend to be treated as the design team&rsquo;s
             preference. Ones that live in engineering&rsquo;s custody get treated as infrastructure.</p>
           </div>
@@ -294,8 +291,7 @@
               Why I could make that argument
             </p>
             <p>I&rsquo;d spent ten years as the person doing all eleven of those things. That list was credible because it
-            was written by someone engineering knew had lived it &mdash; not by a designer describing a job they&rsquo;d
-            never held. Technical credibility isn&rsquo;t a nice-to-have in a conversation about headcount.</p>
+            was written by someone engineering knew had lived it.</p>
           </div>
         </section>
 
@@ -306,9 +302,9 @@
             <h2>Getting it started without prioritisation</h2>
           </div>
           <div class="cs-body">
-            <p>Agreement is not a roadmap slot. It became clear that establishing a pattern library and rolling it out
+            <p>It became clear that establishing a pattern library and rolling it out
             across two brands and seven products was never going to outrank existing project commitments.</p>
-            <p>So we didn&rsquo;t ask it to. We piggybacked an existing UI-heavy project &mdash; the Hotels website
+            <p>The smartest move was to piggyback an existing UI-heavy project &mdash; the Hotels website
             re-platforming &mdash; and standardised exactly <strong>one element</strong>. Buttons.</p>
           </div>
 
@@ -332,8 +328,7 @@
           </div>
           <div class="cs-body">
             <p><strong>Design.</strong> Following our own new workflow, I specified a standard button suite covering every
-            use case and state it would appear in, with touch targets and accessibility as first-order constraints rather
-            than a later audit. We assessed the design languages of the day &mdash; skeuomorphism, flat design, Google
+            use case and state it would appear in, with touch targets and accessibility as first-order constraints. We assessed the design languages of the day &mdash; skeuomorphism, flat design, Google
             Material &mdash; on usability grounds specifically, and settled on a treatment that balanced <em>looking
             clickable</em> against <em>staying simple</em>: flat colour with enough affordance to read as interactive.</p>
           </div>
@@ -344,14 +339,10 @@
           </figure>
 
           <div class="cs-body mt-6">
-            <p><strong>Front-end.</strong> The team chose to write styles as independent LESS files rather than inherit
-            the all-in-one-stylesheet legacy they&rsquo;d been handed, compiled and minified for production. A small
-            decision that made the difference between a library and another monolith.</p>
-            <p><strong>Documentation.</strong> Two audiences with different needs: marketing and visual designers had to
-            see built elements in context before approving them for production; developers needed to know when and how to
-            use each one. Our lead front-end developer settled on <strong>Hologram</strong>, which reads the LESS as
-            written and generates structured documentation from markdown alongside it. We hosted it on Azure to get it
-            online fast.</p>
+            <p><strong>Front-end.</strong> The team chose to write styles as independent LESS files rather than enhance
+            the all-in-one-stylesheet legacy they&rsquo;d been handed. The LESS was compiled and minified for production.</p>
+            <p><strong>Documentation.</strong>  Our lead front-end developer settled on <strong>Hologram</strong>, which reads the LESS and generates structured documentation from markdown within these source files. We hosted it on Azure to get it
+            online fast. This provided a shareable URL that both Marketing and development teams could reference.</p>
           </div>
 
           <figure class="figure figure--wash figure--sm">
@@ -377,7 +368,7 @@
             elements the currently funded projects needed. Over several months that became standardised headings, form
             elements, modals, tooltips, accordions and more.</p>
             <p>I also commandeered the wall beside the office&rsquo;s main entrance and turned the state of the pattern
-            library into something everyone walked past twice a day. Not decoration &mdash; an invitation. It surfaced
+            library into something everyone walked past multiple times a day. It surfaced
             what existed, what was coming, and who to talk to.</p>
           </div>
 
@@ -389,16 +380,11 @@
             <figure class="figure figure--wash">
               <img src="../images/artefacts/ux-project-wall.webp" width="1200" height="900" alt="Shannon Murdoch standing in front of the Webjet UX project wall covered in printed screens and annotations." loading="lazy" decoding="async">
               <figcaption>Same principle applied to the UX project wall &mdash; work in the open, where it gets
-              questioned.</figcaption>
+              visibility.</figcaption>
             </figure>
           </div>
 
-          <div class="cs-body mt-6">
-            <p>In mid-2016 we replaced hand-written specifications with <strong>Sketch Measure</strong>, generating
-            interactive specs automatically. That cut the time spent preparing work for developers, the time spent
-            updating specs after design changes, and &mdash; most valuably &mdash; the margin for error in interpreting
-            them.</p>
-          </div>
+          
 
           <div class="callout callout--outcome">
             <p class="callout__label">
@@ -406,8 +392,7 @@
               The tipping point
             </p>
             <p>Within about six months, developers were reaching for the library <strong>by default</strong> &mdash; not
-            because a policy told them to, but because it was faster than reinventing the UI for each new task. That is
-            the only adoption mechanism I&rsquo;ve seen hold once the person who championed it stops pushing.</p>
+            because a policy told them to, but because it was faster than reinventing the UI for each new task. </p>
           </div>
         </section>
 
@@ -425,7 +410,7 @@
               centralised model to teach the broader development team how to handle things like retina iconography and
               imagery, retiring older methodologies as we went.</li>
               <li><strong>The legacy stylesheet finally got refactored.</strong> The multi-brand, multi-channel
-              stylesheet had gone untouched for years &mdash; unprioritised, and genuinely frightening to change. A
+              monolith stylesheet was genuinely frightening to change. A
               centralised library gave the front-end team a safe surface to work from, so they could start unpicking it.</li>
               <li><strong>Brand and customer experience became manageable.</strong> Legacy styles phased out as the team
               worked through customer-facing systems, and consistency became something you could change centrally rather
@@ -461,22 +446,21 @@
           <div class="callout callout--learn">
             <p class="callout__label">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 2 1 3 1.5 4.5.3.9.5 1.5.5 2.5h8c0-1 .2-1.6.5-2.5C17 12 18 11 18 9a6 6 0 0 0-6-6Z"/><path d="M9 21h6"/></svg>
-              Five things I took from this
+              Four things I took from this
             </p>
             <ul>
-              <li><strong>A design system is an operating-model change wearing a component library&rsquo;s clothes.</strong>
-              The buttons took a week. The workflow, the ownership question and the headcount case took months, and they
-              were the parts that determined whether any of it lasted.</li>
-              <li><strong>Artefacts persuade better than arguments.</strong> One slide of thirty-odd button styles moved
-              the conversation further than any business case I could have written, and it took a day.</li>
-              <li><strong>Don&rsquo;t hold the keys.</strong> Giving ownership to a developer who wanted it made the
+              <li><strong>A design system is team effort.</strong>
+              The buttons took a week. The workflow, ownership clarity, and the headcount case took months, and they
+               determined whether any of it lasted.</li>
+              
+              <li><strong>Find your champion.</strong> Giving ownership to a developer who wanted it made the
               library infrastructure instead of a design-team preference. That decision is why it survived my
               departure &mdash; and why a version of it is still shipping.</li>
               <li><strong>Ride funded work.</strong> Anything that needs its own budget line competes with revenue
-              features and loses. Delivered as a by-product of approved work, it costs nobody a decision.</li>
+              features and loses. Delivered as a by-product of approved work, it costs nobody.</li>
               <li><strong>Adoption follows convenience, not policy.</strong> The library won when it became the fastest
-              route to done. Any adoption strategy that relies on people choosing the virtuous option over the quick one
-              is running on the champion&rsquo;s attention, and expires with it.</li>
+              route to 'done'. Any adoption strategy that relies on people choosing the virtuous option over the quick one
+              ultimately loses.</li>
             </ul>
           </div>
         </section>
