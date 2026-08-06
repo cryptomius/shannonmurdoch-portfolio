@@ -284,6 +284,208 @@
     });
   }
 
+
+  /* ------------------------------------------------------------------------
+     Image lightbox
+     Case study figures and phone screenshots are displayed small so the page
+     stays readable, which makes their detail hard to see. Clicking one opens
+     it as large as the viewport allows; where the file holds more detail
+     still, a second click shows it at full size and the stage scrolls.
+     Escape, the close button, or a click outside the image all dismiss it
+     and return the reader to exactly where they were.
+
+     Only images whose source is meaningfully larger than the size they are
+     displayed at become clickable -- opening a lightbox that renders an
+     image smaller than the thumbnail would be a worse experience, not a
+     better one.
+     ------------------------------------------------------------------------ */
+  function initLightbox() {
+    var GAIN = 1.25; // only offer the zoom when it can show ~25% more detail
+    var thumbs = Array.prototype.slice.call(
+      document.querySelectorAll('main .figure img, main .phone__screen img')
+    );
+    if (!thumbs.length) return;
+
+    var lb, stage, img, cap, closeBtn;
+    var lastFocus = null, currentThumb = null, savedScroll = 0, isActual = false;
+
+    /* -- eligibility ------------------------------------------------------ */
+
+    function shownWidth(el) {
+      var cs = window.getComputedStyle(el);
+      return el.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+    }
+
+    function evaluate(thumb) {
+      if (!thumb.complete || !thumb.naturalWidth) return; // re-checked on load
+      var worth = thumb.naturalWidth > shownWidth(thumb) * GAIN;
+      var host = thumb.closest('.phone__screen') || thumb.closest('.figure');
+      thumb.classList.toggle('is-zoomable', worth);
+      if (host) host.classList.toggle('has-zoom', worth);
+      if (worth) {
+        thumb.tabIndex = 0;
+        thumb.setAttribute('role', 'button');
+        var label = thumb.getAttribute('alt');
+        thumb.setAttribute('aria-label', label ? 'View larger: ' + label : 'View larger image');
+      } else {
+        thumb.removeAttribute('tabindex');
+        thumb.removeAttribute('role');
+        thumb.removeAttribute('aria-label');
+      }
+    }
+
+    /* -- scroll lock ------------------------------------------------------
+       Plain overflow:hidden on the root drops the scroll position, so the
+       body is pinned at its current offset instead and released on close. */
+
+    function lock() {
+      var de = document.documentElement;
+      savedScroll = window.scrollY || de.scrollTop || 0;
+      de.style.setProperty('--sbw', (window.innerWidth - de.clientWidth) + 'px');
+      de.style.setProperty('--lb-top', (-savedScroll) + 'px');
+      de.classList.add('lb-open');
+    }
+
+    function unlock() {
+      var de = document.documentElement;
+      // The site scrolls smoothly, which would animate this restore and let
+      // the focus() below race it. Put the jump back instantly.
+      var prev = de.style.scrollBehavior;
+      de.style.scrollBehavior = 'auto';
+      de.classList.remove('lb-open');
+      de.style.removeProperty('--lb-top');
+      de.style.removeProperty('--sbw');
+      window.scrollTo(0, savedScroll);
+      de.style.scrollBehavior = prev;
+    }
+
+    /* -- the overlay ------------------------------------------------------ */
+
+    function build() {
+      lb = document.createElement('div');
+      lb.className = 'lightbox';
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.setAttribute('aria-label', 'Enlarged image');
+      lb.innerHTML =
+        '<div class="lightbox__top">' +
+          '<button type="button" class="lightbox__close" aria-label="Close image">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="lightbox__stage"><img class="lightbox__img" alt=""></div>' +
+        '<p class="lightbox__cap"></p>';
+      document.body.appendChild(lb);
+
+      stage = lb.querySelector('.lightbox__stage');
+      img = lb.querySelector('.lightbox__img');
+      cap = lb.querySelector('.lightbox__cap');
+      closeBtn = lb.querySelector('.lightbox__close');
+
+      closeBtn.addEventListener('click', close);
+      lb.addEventListener('click', close); // anywhere off the image dismisses
+      img.addEventListener('click', function (e) { e.stopPropagation(); toggleActual(); });
+      img.addEventListener('load', measure);
+    }
+
+    /* Offer the full-size step only when the fitted view is still showing
+       the reader less than the file holds. */
+    function measure() {
+      var fits = img.naturalWidth <= img.clientWidth + 1 &&
+                 img.naturalHeight <= img.clientHeight + 1;
+      lb.classList.toggle('can-zoom', !fits);
+      img.tabIndex = fits ? -1 : 0;
+      var hint = cap.querySelector('.lightbox__hint');
+      if (hint) hint.textContent = fits ? '' : 'Click the image to view it at full size';
+
+      /* On a narrow screen the fitted view can be barely bigger than the
+         thumbnail it came from, which makes the first tap feel like nothing
+         happened. Go straight to full size in that case. */
+      if (!fits && !isActual && currentThumb) {
+        var tw = currentThumb.getBoundingClientRect().width;
+        if (tw && img.getBoundingClientRect().width < tw * 1.25) toggleActual();
+      }
+    }
+
+    function toggleActual() {
+      if (!isActual && !lb.classList.contains('can-zoom')) return;
+      isActual = !isActual;
+      lb.classList.toggle('is-actual', isActual);
+      if (isActual) {
+        stage.scrollLeft = (stage.scrollWidth - stage.clientWidth) / 2;
+        stage.scrollTop = 0;
+      }
+    }
+
+    function open(thumb) {
+      if (!lb) build();
+      lastFocus = thumb;
+      currentThumb = thumb;
+      isActual = false;
+      lb.classList.remove('is-actual');
+
+      var figure = thumb.closest('figure');
+      var fc = figure ? figure.querySelector('figcaption') : null;
+      cap.innerHTML = (fc ? fc.innerHTML : (thumb.getAttribute('alt') || '')) +
+                      '<span class="lightbox__hint"></span>';
+
+      img.alt = thumb.getAttribute('alt') || '';
+      img.src = thumb.currentSrc || thumb.src;
+
+      lock();
+      lb.classList.add('is-open');
+      if (img.complete) measure();
+      closeBtn.focus({ preventScroll: true });
+    }
+
+    function close() {
+      if (!lb || !lb.classList.contains('is-open')) return;
+      lb.classList.remove('is-open', 'is-actual');
+      isActual = false;
+      currentThumb = null;
+      unlock();
+      if (lastFocus) { lastFocus.focus({ preventScroll: true }); lastFocus = null; }
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (!lb || !lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      // At most two focusable stops, so cycle by hand rather than scan the tree.
+      var stops = [closeBtn];
+      if (img.tabIndex === 0) stops.push(img);
+      var i = stops.indexOf(document.activeElement);
+      var next = e.shiftKey ? i - 1 : i + 1;
+      if (i === -1 || next < 0 || next >= stops.length) {
+        e.preventDefault();
+        stops[e.shiftKey ? stops.length - 1 : 0].focus();
+      }
+    });
+
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('load', function () { evaluate(thumb); });
+      thumb.addEventListener('click', function () {
+        if (thumb.classList.contains('is-zoomable')) open(thumb);
+      });
+      thumb.addEventListener('keydown', function (e) {
+        if (!thumb.classList.contains('is-zoomable')) return;
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          open(thumb);
+        }
+      });
+      evaluate(thumb);
+    });
+
+    // Column widths change with the viewport, so eligibility can change too.
+    var t;
+    window.addEventListener('resize', function () {
+      clearTimeout(t);
+      t = setTimeout(function () { thumbs.forEach(evaluate); }, 200);
+    });
+  }
+
   /* ------------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------------ */
@@ -294,6 +496,7 @@
     initReveal();
     initProgress();
     initToc();
+    initLightbox();
     Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), initCarousel);
   }
 
