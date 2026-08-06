@@ -82,11 +82,9 @@
         <li>Mobile flight purchase path</li>
       </ol>
       <p class="eyebrow">Case study 02 &middot; Webjet (ASX:WEB)</p>
-      <h1>Six rounds of testing to de-risk a mobile purchase path</h1>
+      <h1>De-risking design through customer involvement</h1>
       <p class="cs-hero__lede">
-        Webjet&rsquo;s domestic flights mobile website, rebuilt from agency wireframes the flight API
-        couldn&rsquo;t serve. In a purchase path, confusion converts directly into lost revenue &mdash; so nothing
-        reached build on my judgement alone. Including the fix I took to test twice, and customers rejected twice.
+        Webjet&rsquo;s mobile flight purchase path needed a rebuild, and opinions were abundant. I led the risk-averse product team through internal and external rounds of research &amp; refinement, and the evidence decided what shipped.
       </p>
     </div>
   </header>
@@ -105,7 +103,7 @@
       </div>
       <div class="cs-stat">
         <dt>Duration</dt>
-        <dd>Six consecutive rounds of remote usability studies, all of them before build</dd>
+        <dd>6-7 months, alongside other projects.</dd>
       </div>
       <div class="cs-stat">
         <dt>Tools</dt>
@@ -118,7 +116,7 @@
       </div>
       <div class="cs-stat">
         <dt>Outcome</dt>
-        <dd>Two confusion points that had survived three rounds <strong>eliminated</strong>; a fully specified,
+        <dd>A fully specified, de-risked, 
         evidence-backed design that went to build</dd>
       </div>
     </dl>
@@ -128,37 +126,30 @@
   <div class="wrap">
     <div class="cs-summary">
       <h2 class="cs-summary__label">The short version</h2>
-      <p class="cs-summary__lede">A rebuild of the screens where a customer picks their flights &mdash; the last
-      decision before checkout, and the one where confusion turns straight into an abandoned booking.</p>
+      <p class="cs-summary__lede">A case study of the process behind de-risking a critical purchase path design overhaul.</p>
 
       <div class="cs-summary__grid">
         <div class="cs-summary__col">
           <h3>Four sets of input, resolved in this order</h3>
           <ol>
-            <li><strong>The agency</strong>, engaged before I joined &mdash; concepts worth keeping, wrapped in an
-            interface the flight API could never have filled.</li>
-            <li><strong>Product &amp; Marketing</strong> &mdash; a featured airline slot and fare rules in;
-            &lsquo;compare fares&rsquo; out, as beyond MVP.</li>
-            <li><strong>The UI dev team</strong> &mdash; buildability feedback taken on the near-final card, while
-            it could still change.</li>
-            <li><strong>Customers</strong> &mdash; six rounds of remote usability studies. The only input with a
-            veto.</li>
+            <li><strong>The agency</strong>, engaged before I joined.</li>
+            <li><strong>Product &amp; Marketing</strong>, with existing commercial arrangements.</li>
+            <li><strong>The UI dev team</strong>, with buildability feedback.</li>
+            <li><strong>Customers</strong> &ndash; six rounds of remote usability studies.</li>
           </ol>
         </div>
         <div class="cs-summary__col">
-          <h3>Why it ran to six rounds</h3>
-          <p>Webjet was risk-averse, and an in-house UX practice was still a new idea there. So alongside the design
-          work I was making an argument: that testing a revenue-critical path <em>before</em> building it is how you
-          take risk out of it, and that when the evidence and the designer disagree, the customer wins.</p>
-          <p>Six rounds is what that argument looks like in practice &mdash; including the round where it obliged me
-          to remove my own idea.</p>
+          <h3>Why this approach was necessary</h3>
+          <p>Webjet was risk-averse. Changes to any purchase path were highly scrutinised by internal stakeholders due to the potential impact on revenue. The in-house UX practice was still new there. So alongside the design
+          work I was making an argument: that testing <em>before</em> building it is how you
+          de-risk a project, and that customer research evidence trumps internal stakeholder's gut-feel opinions.</p>
+          
         </div>
       </div>
 
-      <p class="cs-summary__read"><strong>How this is laid out.</strong> <strong>Part one</strong> is the internal
-      work &mdash; inheriting, adapting and specifying, with every stakeholder reconciled before a customer saw
-      anything. <strong>Part two</strong> is the six rounds of usability testing that decided what actually shipped.
-      If you only read one, read part two.</p>
+      <p class="cs-summary__read"><strong>How this is laid out:</strong><br /><strong>Part one</strong> is the internal
+      work &ndash; inheriting and adapting, with stakeholders reconciled prior to moving forward. <br /><strong>Part two</strong> is the six rounds of usability testing that decided what shipped &ndash; including adding a fake loading screen 👀 when the flight data was already loaded.
+    </p>
     </div>
   </div>
 
@@ -175,7 +166,7 @@
           <li><a href="#passes">Two passes before testing</a></li>
           <li><a href="#prototype">Wireframe to prototype</a></li>
           <li><a href="#paired">The paired flight flow</a></li>
-          <li><a href="#density">What earns its pixels</a></li>
+          <li><a href="#density">Earn your pixels</a></li>
           <li><p class="toc__part">Part two &middot; Customers</p></li>
           <li><a href="#rounds">Six rounds of testing</a></li>
           <li><a href="#final">The design that shipped</a></li>
@@ -191,10 +182,9 @@
         <div class="cs-part">
           <p class="cs-part__eyebrow">Part one</p>
           <h2 class="cs-part__title" id="part-one">Shaping it internally</h2>
-          <p>Everything in this half happened before a single customer saw anything. Inheriting the agency&rsquo;s
-          work, reconciling it with what the API could actually return, folding in Product, Marketing and
-          engineering, and specifying every variant flow &mdash; so that when testing began we&rsquo;d be spending
-          the research budget on the questions only customers could answer.</p>
+          <p>Everything in this half happened before a single customer saw anything. Inheriting an agency&rsquo;s
+          work, reconciling it with what the API could actually return, consulting Product, Marketing and
+          engineering, and defining every flow variant &ndash; so that when testing began we&rsquo;d be extracting insights only customers could answer.</p>
         </div>
 
         <!-- 01 -->
@@ -205,9 +195,8 @@
           </div>
           <div class="cs-body">
             <p>Webjet reached smartphone customers through a mobile web site and an iOS app that had been built
-            separately. Search for a flight and what you got depended entirely on where you happened to land.</p>
-            <p><strong>Mobile web</strong> presented results as a dense sortable table &mdash; depart time, stops,
-            price &mdash; then sent you off to a <em>separate screen</em> to choose a fare type.</p>
+            at different times by different teams (one internal, one external).</p>
+            <p><strong>Mobile web</strong> presented results as a dense sortable table then sent you off to a separate screen to choose a fare type.</p>
           </div>
 
           <div class="phones">
@@ -226,8 +215,7 @@
           </div>
 
           <div class="cs-body mt-6">
-            <p>The <strong>iOS app</strong> used a different visual language entirely, and kept fare selection inside
-            the flight detail screen.</p>
+            <p>The <strong>iOS app</strong> used a different visual language entirely (displaying a timeline concept and banner), and retained the selected flight's details within the fare selection screen.</p>
           </div>
 
           <div class="phones">
@@ -241,25 +229,11 @@
               <div class="phone__screen">
                 <img src="../images/work/mobile-flight-purchase-path/22-legacy-ios-fare-select.webp" width="750" height="1334" alt="Legacy iOS app fare selection inside the flight detail screen, listing Light Fare and Express Fare options with baggage allowances." loading="lazy" decoding="async">
               </div>
-              <figcaption>Fares chosen in place, on a different flow again.</figcaption>
+              <figcaption>Fare selection below flight details.</figcaption>
             </figure>
           </div>
 
-          <div class="callout callout--insight">
-            <p class="callout__label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
-              The organisational problem behind the design problem
-            </p>
-            <p>Flight results is the screen where a customer decides whether to buy. Every moment of hesitation in
-            it &mdash; not knowing which leg you&rsquo;re choosing, not trusting the order of the list, not knowing
-            how to back out &mdash; is a chance to abandon. That part was easy to argue.</p>
-            <p>The harder part was organisational. Webjet was risk-averse, and an in-house UX practice was still new
-            there. Proposing to test a revenue-critical flow six times <em>before</em> building any of it does not
-            sound like the cautious option to a business that measures caution in features shipped. So this project
-            was always going to be two jobs at once: designing the thing, and demonstrating the method &mdash;
-            that research is how you take risk <em>out</em> of a critical path, and that the person who decides
-            whether a design works is the customer using it, not the designer who drew it.</p>
-          </div>
+          
         </section>
 
         <!-- 02 -->
@@ -270,33 +244,21 @@
           </div>
           <div class="cs-body">
             <p>An external agency had produced wireframes before I was involved. Much of the interface they proposed
-            could not be accomplished within the constraints of <strong>single API call content
-            retrieval</strong> &mdash; the data simply wasn&rsquo;t there to draw those screens.</p>
-            <p>The fare comparison also leaned on iconography to express the differences between fares. That was
-            ambiguous to read, and it carried more development work than the MVP allowed.</p>
-            <p>Two ideas in there were worth keeping. <strong>Cabin classes surfaced per flight</strong> rather than
-            buried, and &mdash; more importantly &mdash; <strong>the card expanding in place</strong>, so choosing a
-            fare happened on the results page. Our existing mobile site handed customers off to a separate screen to
-            pick a fare; keeping them in the list was obviously better. Where exactly those two ideas should live
-            took me two more passes to settle.</p>
+            could not be accomplished within the constraints of single API call content
+            retrieval &mdash; the data simply wasn&rsquo;t there to populate those screens.</p>
+            <p>The fare comparison also leaned on iconography to express the differences between fares. This required manually codifying every possible fare available (on an on-going basis) and bearing the risk of disparity upon change by the airlines, which carried more development work than the MVP allowed.</p>
+            <p>One idea was worth keeping. <strong>The flight card expanding in place</strong>, so choosing a
+            fare happened on the results page. Our existing mobile site &amp; iOS app handed customers off to a separate screen to
+            pick a fare &mdash; keeping them in the flight list reduced friction in the case of a change-of-mind.</p>
           </div>
 
           <figure class="figure figure--wash">
             <img src="../images/work/mobile-flight-purchase-path/03-agency-wireframes.webp" width="760" height="380" alt="External agency wireframes for mobile flight search: a results list with Economy and Business price columns, and an expanded fare comparison table using icons to indicate fare differences." loading="lazy" decoding="async">
             <figcaption><strong>The agency wireframes.</strong> Useful ideation &mdash; but more interface than a
-            single API call could fill, and more build than MVP could fund.</figcaption>
+            single API call could fill, and more complexity / risk / maintenance than MVP could fund.</figcaption>
           </figure>
 
-          <div class="callout callout--decision">
-            <p class="callout__label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-              Decision: adapt rather than reject
-            </p>
-            <p>Binning the agency work outright would have been the easy call, and it would have thrown away the one
-            structural idea worth keeping. Instead I separated the concepts from the execution: keep what the data
-            contract supports, rebuild the rest against what the API actually returns. Finding this out at wireframe
-            stage costs an afternoon. Finding it out mid-sprint costs a sprint.</p>
-          </div>
+         
         </section>
 
         <!-- 03 -->
@@ -306,9 +268,7 @@
             <h3>Two wireframe passes before anyone saw it</h3>
           </div>
           <div class="cs-body">
-            <p><strong>Pass one</strong> reconciled the agency structure with reality: depart and return tabs, a
-            filter and sort strip, one top-level card per cabin class, and card expansion to reveal fare types and
-            flight details.</p>
+            <p><strong>Pass one</strong> moved the complex fare comparison out of the fares list due to significant technical scope - this was flagged as a future product backlog item and dealt with in a subsequent year.</p>
             <p>Then I critiqued my own pass. Expansion to see fares was good practice and stayed. But giving
             <em>each cabin class</em> its own top-level card was neither necessary nor clear &mdash; it meant one
             flight appearing repeatedly down the list, which is exactly the kind of thing that makes a customer
@@ -329,9 +289,8 @@
           </div>
 
           <div class="cs-body mt-6">
-            <p>Pass two simplified the top-level cards and moved every cabin class into the expanded card. It also
-            called out non-standard airports by airport code, and introduced a new approach: grouping paired fares
-            into their own cards at the top level.</p>
+            <p><strong>Pass two</strong> halved the number of top-level cards by moving every cabin class into the expanded card. It also
+            revealed the arrival/departure airport code, and introduced our approach to displaying '<a href="paired-flight-modal.html" target="_blank">paired flights</a>': displaying them as their own cards at the top level rather than introducing complexity downstream.</p>
             <p>General flow approved. Now it was worth building a prototype.</p>
           </div>
         </section>
@@ -346,10 +305,9 @@
             <p>High-fidelity mocks next, then clickable prototypes in InVision for remote usability testing. Two
             things went in at this stage that hadn&rsquo;t been in the wireframes:</p>
             <ul>
-              <li><strong>Non-primary airports highlighted orange.</strong> Avalon is not Tullamarine, and a
-              customer who discovers that at the airport is a customer you have lost.</li>
-              <li><strong>Marketing and Product requirements</strong> &mdash; a featured airline slot and fare
-              rules. The out-of-scope &lsquo;compare fares&rsquo; button came out for MVP.</li>
+              <li><strong>Non-primary airports highlighted orange.</strong> Melbourne (Avalon) is not Melbourne (Tullamarine), and a
+              customer who discovers that at the airport is not happy.</li>
+              <li><strong>Marketing and Product requirements</strong> &mdash; a &rsquo;featured airline&rsquo; slot was added, and the &rsquo;compare fares&rsquo; button came out for MVP.</li>
             </ul>
           </div>
 
@@ -371,14 +329,13 @@
           <div class="cs-body mt-6">
             <p>Then a round of Webjet-side changes before testing:</p>
             <ul>
-              <li><strong>Filter and Sort combined into one control.</strong> Customers used the two words
-              interchangeably, so I stopped making them choose between them.</li>
-              <li><strong>A change-of-mind pathway surfaced in the UI</strong> &mdash; &lsquo;Edit Search&rsquo;
+              <li><strong>Filter and Sort combined into one control.</strong> Previous testing on our hotels purchase path revealed that customers used the two words
+              interchangeably.</li>
+              <li><strong>A change-of-mind pathway</strong> &mdash; &lsquo;Edit Search&rsquo;
               given a permanent home rather than being a back-button exercise.</li>
-              <li><strong>&lsquo;Selected Orange&rsquo; from the pattern library</strong> for the expanded card
-              state, along with buttons and notifications.</li>
-              <li><strong>Visual hierarchy tidied</strong> so the card&rsquo;s text elements sat in the correct
-              order of importance, and &lsquo;via&rsquo; city names plus stop times added.</li>
+              <li><strong>&lsquo;Selected Orange&rsquo; UI pattern library</strong> colour used for the expanded card border and selected fare.</li>
+              <li><strong>Visual hierarchy refined</strong> so the card&rsquo;s text elements sat in the correct
+              order of importance. &lsquo;Via&rsquo; city names plus stop times added.</li>
               <li><strong>Seven card types identified and designed</strong>: featured, sale, non-stop, with stops,
               non-standard airport, next-day arrival, and operated by another carrier.</li>
               <li><strong>A larger call to action.</strong></li>
@@ -406,11 +363,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
               Design system, doing its job
             </p>
-            <p>Buttons, notifications and the selected-card colour all came from the
-            <a href="ui-pattern-library.html">UI Pattern Library</a> I&rsquo;d founded the year before. That is six
-            rounds of studies in which nobody had to argue about a button, and six rounds in which the front-end
-            team could read the prototype as components they already had. A design system pays for itself in the
-            projects it makes boring.</p>
+            <p>Buttons, modals, and the selected-card colour all came from the
+            <a href="ui-pattern-library.html">UI Pattern Library</a> I&rsquo;d founded the year before. This accelerated design/prototyping decision making and significantly reduced downstream build time.</p>
           </div>
         </section>
 
@@ -427,8 +381,7 @@
             what customers could understand.</p>
             <p>So I designed the mobile paired flight flow on those learnings rather than starting fresh, and
             adopted the <strong>&lsquo;paired flight&rsquo;</strong> nomenclature from the earlier studies for
-            consistency. Every key variant flow was explicitly designed rather than left for build to interpret:
-            results collapsed and expanded, and the returning-leg results collapsed and expanded.</p>
+            consistency. Every key variant flow was explicitly designed rather than left for the downstream build team to interpret.</p>
           </div>
 
           <div class="phones">
@@ -454,23 +407,14 @@
             </figure>
           </div>
 
-          <div class="callout callout--decision">
-            <p class="callout__label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-              Decision: test the case where the customer is disappointed
-            </p>
-            <p>Round one ran three scenarios: a one-way booking, a paired flight the customer <em>wanted</em>, and a
-            paired flight the customer <strong>did not want</strong>. Rounds two to six ran the last two. Designing
-            the happy path is the easy half; the revenue leaks out of the moment a customer is told they can&rsquo;t
-            have what they picked. If the recovery path isn&rsquo;t tested, it isn&rsquo;t designed.</p>
-          </div>
+          
         </section>
 
         <!-- 06 -->
         <section class="cs-chapter" id="density">
           <div class="cs-chapter__head">
             <span class="cs-chapter__num">06</span>
-            <h3>What earns its pixels</h3>
+            <h3>Earn your pixels</h3>
           </div>
           <div class="cs-body">
             <p>Travel products are information-dense and a phone gives you one column, so the last pass before
@@ -515,13 +459,22 @@
         </section>
 
         <section class="cs-part-group" aria-labelledby="part-two">
+          
         <div class="cs-part">
           <p class="cs-part__eyebrow">Part two</p>
           <h2 class="cs-part__title" id="part-two">Handing the decision to customers</h2>
-          <p>Six rounds of remote usability studies through UserTesting.com. Two problems refused to die for three
-          straight rounds, one of my own fixes failed twice and had to be taken back out, and the round that finally
-          cleared both of them did it with one word and a rebuilt header.</p>
+          <p>Six rounds of remote usability studies through UserTesting.com. Each round surfacing new insights and validating or invalidating my solutions.</p>
         </div>
+
+        <div class="callout callout--decision">
+            <p class="callout__label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Decision: Testing for pain, not just happy paths
+            </p>
+            <p>I crafted three scenarios to test: a simple one-way booking, engaging with a paired flight the customer <strong>did not want</strong>, and a
+            discovering a paired flight the customer <em>did want</em>. Designing
+            the happy path is the easy part; but revenue is lost when friction is encountered. If the recovery path isn&rsquo;t tested, it isn&rsquo;t designed!</p>
+          </div>
 
         <!-- 07 -->
         <section class="cs-chapter" id="rounds">
@@ -531,7 +484,7 @@
           </div>
           <div class="cs-body">
             <p>The loop each time: run the studies, write up what I saw, change the design, run it again. What
-            follows is every round as it happened &mdash; including the two that went backwards.</p>
+            follows is every round as it happened &mdash; including a surprising expectation around a missing loading screen.</p>
           </div>
 
           <div class="rounds">
@@ -556,8 +509,8 @@
                 <h4>What I changed</h4>
                 <ul>
                   <li class="did">Made the header, including the filter button, sticky</li>
-                  <li class="did">Pulled the returning flight details out of the next screen and into the same card, so people didn&rsquo;t have to leave the results &mdash; a call we made as a team, mirroring the desktop matrix</li>
-                  <li class="did">Began experimenting on FEATURED, again as a team: a dividing line, then a red background tint, then &mdash; eventually &mdash; a rename</li>
+                  <li class="did">For paired flights, I moved the returning flight options out of the next screen and into the departing flight card, so people didn&rsquo;t have to leave the departing flight screen &mdash; a call that ultimately proved more confusing</li>
+                  <li class="did">Began experimenting on the FEATURED flight: a dividing line, then a red background tint, then &mdash; eventually &mdash; a rename, which landed well</li>
                 </ul>
                 <h4>The assumption I logged</h4>
                 <ul>
@@ -664,7 +617,7 @@
                   <li class="did">FEATURED renamed <strong>PROMOTION</strong></li>
                   <li class="did">Paired flight <strong>reverted</strong> to the original flow; &lsquo;Select&rsquo; relabelled <strong>&lsquo;Continue&rsquo;</strong></li>
                   <li class="did">Switched the positions of Filter and Edit Search</li>
-                  <li class="did">Loading screens added between the departing and returning steps &mdash; even though the content was already loaded, because participants expected a transition</li>
+                  <li class="did"><strong>Loading screens</strong> added between the departing and returning steps &mdash; even though the content was already loaded, because <em>participants expected a transition</em></li>
                 </ul>
                 <h4>What happened</h4>
                 <ul>
@@ -779,7 +732,7 @@
             <h3>The design that went to build</h3>
           </div>
           <div class="cs-body">
-            <p>Sortable column headers with a single imperative and the date pinned above them. PROMOTION instead of
+            <p>Sortable column headers with a single imperative ('Departing Flight' / 'Returning Flight') and the date pinned above them. PROMOTION instead of
             FEATURED. Paired flights on the original two-step flow with clearer labelling and a positively framed
             way out. Filters and Edit Search in a floating footer that gets out of the way. The selected departing
             flight carried forward so nobody has to hold it in their head.</p>
@@ -808,12 +761,10 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></svg>
               Outcome
             </p>
-            <p>Both confusion points that had survived three rounds of iteration were <strong>eliminated</strong>,
-            and the paired flight experience went from confusion all around &mdash; participants trying to un-tick
-            items &mdash; to clarity improving in each of the last three rounds. The design reached the development
-            team already carrying its evidence, which is the point. Every one of the six rounds cost a fraction of
-            what it costs to discover the same problem in production, on the screen where customers are deciding
-            whether to buy.</p>
+            <p>Confusion points that had survived multiple rounds of iteration were <strong>eliminated</strong>,
+            and the paired flight experience went from confusion all around to clarity improving in each of the last three rounds. The design reached the development
+            team already carrying its evidence of success. Every one of the six rounds cost a fraction of
+            what it costs to discover the same problem in production, on purchase-path screens where confusion directly correlates to loss of revenue.</p>
           </div>
         </section>
 
@@ -832,36 +783,25 @@
               Five things I took from this
             </p>
             <ul>
-              <li><strong>Write your assumptions down before you test them.</strong> I recorded that I expected a
-              sticky header to go some way to fixing the wayfinding problem. It didn&rsquo;t, and because the
-              expectation was on paper, round two produced a finding instead of a shrug. An untested assumption is a
-              risk you are carrying without pricing it.</li>
-              <li><strong>Be willing to undo your own work.</strong> The single-card paired flight was the fix I
-              took to test, and customers rejected it twice. Reverting in round four is what made rounds four, five
-              and six productive. Having a standing research budget is what made reverting survivable rather than
-              embarrassing.</li>
-              <li><strong>One honest word did more than two rounds of visual treatment.</strong> On FEATURED we
-              tried a dividing line, then a red background tint. Round four renamed it PROMOTION and put sortable
-              column titles in the header, and the confusion was gone. My read is that the label had been making a
-              claim about the ordering of the list that it couldn&rsquo;t support, so no amount of contrast was ever
-              going to fix it.</li>
-              <li><strong>People expect a transition even when there is nothing to wait for.</strong> The content
-              was already loaded, and the quick fade between departing and returning wasn&rsquo;t telling
-              participants what had just happened or what to do next &mdash; they expected a transition. Adding a
-              loading screen with nothing to load is a counterintuitive fix I&rsquo;ve reused since.</li>
-              <li><strong>Framing changes the relationship.</strong> &ldquo;Don&rsquo;t like your choices?&rdquo;
-              became &ldquo;Want more flight options?&rdquo; and paired flight clarity improved again. My read is
-              that the negative version quietly implied the customer had made a mistake, where the positive version
-              reads as an offer &mdash; same link, same destination, different tone of voice.</li>
+              <li><strong>Having the right foundations is critical to success.</strong> Prior to this project I had established a UI Pattern Library, secured a remote usability study budget, established a front-end development specialist team, and built trust with internal stakeholders.</li>
+              <li><strong>Outsource decision making to customers.</strong> Before making usability studies a key practice at Webjet there was no way to know <em>for sure</em> that what made sense to an industry-savvy internal stakeholder made sense to customers.</li>
+              <li><strong>Park your ego.</strong> Maturing as a product designer involves being open to and actively inviting feedback and criticism.</li>
+              <li><strong>Document your assumptions and observations.</strong> This is critical to bring the team with you on the journey and back your decisions.</li>
+              <li><strong>Changing a word can trump visual changes.</strong> For the FEATURED flight we
+              tried multiple visual variations. Round four renamed it PROMOTION and the confusion was gone.</li>
+              <li><strong>Interaction design matters.</strong> Returning flight content
+              was already loaded, but customers expected an interstitial transition after selecting a departing flight. Adding a
+              loading screen with nothing to load is a counterintuitive fix but it worked!</li>
+              
             </ul>
           </div>
 
           <div class="cs-body mt-6">
-            <p>The through-line, and the reason I work this way: on a purchase path, my taste doesn&rsquo;t get the
-            deciding vote. Some of the changes I was most confident about moved nothing, the two problems I believed
-            were solved in round two weren&rsquo;t solved until round four, and the paired flight approach I
-            advocated had to be taken back out. Every one of those was cheap to find in a prototype. Finding the
-            same things later, in a conversion chart, means the money has already left.</p>
+            <p>The through-line, and the reason I took this approach: on a purchase path, my taste doesn&rsquo;t get the
+            deciding vote. Some of the changes I was most confident about moved nothing, problems I believed
+            were solved in round two weren&rsquo;t solved until round four, and the paired flight flow I
+            explored increased confusion. Every one of those was cheap to find in a prototype. Finding the
+            same things later in production means reputational damage and losing customers.</p>
           </div>
         </section>
 
